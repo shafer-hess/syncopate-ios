@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF77A713240D696100E8B9D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A712240D696100E8B9D7 /* AppDelegate.swift */; };
+		CF77A715240D696100E8B9D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A714240D696100E8B9D7 /* SceneDelegate.swift */; };
+		CF77A717240D696100E8B9D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A716240D696100E8B9D7 /* ViewController.swift */; };
+		CF77A71A240D696100E8B9D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF77A718240D696100E8B9D7 /* Main.storyboard */; };
+		CF77A71C240D696300E8B9D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF77A71B240D696300E8B9D7 /* Assets.xcassets */; };
+		CF77A71F240D696300E8B9D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */; };
+		CF77A72A240D696300E8B9D7 /* SyncopateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A729240D696300E8B9D7 /* SyncopateTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF77A726240D696300E8B9D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF77A707240D696100E8B9D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF77A70E240D696100E8B9D7;
+			remoteInfo = Syncopate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF77A70F240D696100E8B9D7 /* Syncopate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syncopate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF77A712240D696100E8B9D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CF77A714240D696100E8B9D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CF77A716240D696100E8B9D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF77A719240D696100E8B9D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CF77A71B240D696300E8B9D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF77A71E240D696300E8B9D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF77A720240D696300E8B9D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF77A725240D696300E8B9D7 /* SyncopateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyncopateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF77A729240D696300E8B9D7 /* SyncopateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncopateTests.swift; sourceTree = "<group>"; };
+		CF77A72B240D696300E8B9D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF77A70C240D696100E8B9D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF77A722240D696300E8B9D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF77A706240D696100E8B9D7 = {
+			isa = PBXGroup;
+			children = (
+				CF77A711240D696100E8B9D7 /* Syncopate */,
+				CF77A728240D696300E8B9D7 /* SyncopateTests */,
+				CF77A710240D696100E8B9D7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF77A710240D696100E8B9D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF77A70F240D696100E8B9D7 /* Syncopate.app */,
+				CF77A725240D696300E8B9D7 /* SyncopateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF77A711240D696100E8B9D7 /* Syncopate */ = {
+			isa = PBXGroup;
+			children = (
+				CF77A712240D696100E8B9D7 /* AppDelegate.swift */,
+				CF77A714240D696100E8B9D7 /* SceneDelegate.swift */,
+				CF77A716240D696100E8B9D7 /* ViewController.swift */,
+				CF77A718240D696100E8B9D7 /* Main.storyboard */,
+				CF77A71B240D696300E8B9D7 /* Assets.xcassets */,
+				CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */,
+				CF77A720240D696300E8B9D7 /* Info.plist */,
+			);
+			path = Syncopate;
+			sourceTree = "<group>";
+		};
+		CF77A728240D696300E8B9D7 /* SyncopateTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF77A729240D696300E8B9D7 /* SyncopateTests.swift */,
+				CF77A72B240D696300E8B9D7 /* Info.plist */,
+			);
+			path = SyncopateTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF77A70E240D696100E8B9D7 /* Syncopate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF77A72E240D696300E8B9D7 /* Build configuration list for PBXNativeTarget "Syncopate" */;
+			buildPhases = (
+				CF77A70B240D696100E8B9D7 /* Sources */,
+				CF77A70C240D696100E8B9D7 /* Frameworks */,
+				CF77A70D240D696100E8B9D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Syncopate;
+			productName = Syncopate;
+			productReference = CF77A70F240D696100E8B9D7 /* Syncopate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF77A724240D696300E8B9D7 /* SyncopateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF77A731240D696300E8B9D7 /* Build configuration list for PBXNativeTarget "SyncopateTests" */;
+			buildPhases = (
+				CF77A721240D696300E8B9D7 /* Sources */,
+				CF77A722240D696300E8B9D7 /* Frameworks */,
+				CF77A723240D696300E8B9D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF77A727240D696300E8B9D7 /* PBXTargetDependency */,
+			);
+			name = SyncopateTests;
+			productName = SyncopateTests;
+			productReference = CF77A725240D696300E8B9D7 /* SyncopateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF77A707240D696100E8B9D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = Syncopate;
+				TargetAttributes = {
+					CF77A70E240D696100E8B9D7 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					CF77A724240D696300E8B9D7 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = CF77A70E240D696100E8B9D7;
+					};
+				};
+			};
+			buildConfigurationList = CF77A70A240D696100E8B9D7 /* Build configuration list for PBXProject "Syncopate" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF77A706240D696100E8B9D7;
+			productRefGroup = CF77A710240D696100E8B9D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF77A70E240D696100E8B9D7 /* Syncopate */,
+				CF77A724240D696300E8B9D7 /* SyncopateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF77A70D240D696100E8B9D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF77A71F240D696300E8B9D7 /* LaunchScreen.storyboard in Resources */,
+				CF77A71C240D696300E8B9D7 /* Assets.xcassets in Resources */,
+				CF77A71A240D696100E8B9D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF77A723240D696300E8B9D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF77A70B240D696100E8B9D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF77A717240D696100E8B9D7 /* ViewController.swift in Sources */,
+				CF77A713240D696100E8B9D7 /* AppDelegate.swift in Sources */,
+				CF77A715240D696100E8B9D7 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF77A721240D696300E8B9D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF77A72A240D696300E8B9D7 /* SyncopateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF77A727240D696300E8B9D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF77A70E240D696100E8B9D7 /* Syncopate */;
+			targetProxy = CF77A726240D696300E8B9D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CF77A718240D696100E8B9D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF77A719240D696100E8B9D7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF77A71E240D696300E8B9D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF77A72C240D696300E8B9D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF77A72D240D696300E8B9D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF77A72F240D696300E8B9D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Syncopate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = syncopate.Syncopate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF77A730240D696300E8B9D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Syncopate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = syncopate.Syncopate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CF77A732240D696300E8B9D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SyncopateTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = syncopate.SyncopateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Syncopate.app/Syncopate";
+			};
+			name = Debug;
+		};
+		CF77A733240D696300E8B9D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SyncopateTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = syncopate.SyncopateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Syncopate.app/Syncopate";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF77A70A240D696100E8B9D7 /* Build configuration list for PBXProject "Syncopate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF77A72C240D696300E8B9D7 /* Debug */,
+				CF77A72D240D696300E8B9D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF77A72E240D696300E8B9D7 /* Build configuration list for PBXNativeTarget "Syncopate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF77A72F240D696300E8B9D7 /* Debug */,
+				CF77A730240D696300E8B9D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF77A731240D696300E8B9D7 /* Build configuration list for PBXNativeTarget "SyncopateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF77A732240D696300E8B9D7 /* Debug */,
+				CF77A733240D696300E8B9D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF77A707240D696100E8B9D7 /* Project object */;
+}
