@@ -79,13 +79,13 @@
 		CF77A711240D696100E8B9D7 /* Syncopate */ = {
 			isa = PBXGroup;
 			children = (
+				CF77A71B240D696300E8B9D7 /* Assets.xcassets */,
 				CF77A712240D696100E8B9D7 /* AppDelegate.swift */,
+				CF77A720240D696300E8B9D7 /* Info.plist */,
+				CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */,
+				CF77A718240D696100E8B9D7 /* Main.storyboard */,
 				CF77A714240D696100E8B9D7 /* SceneDelegate.swift */,
 				CF77A716240D696100E8B9D7 /* ViewController.swift */,
-				CF77A718240D696100E8B9D7 /* Main.storyboard */,
-				CF77A71B240D696300E8B9D7 /* Assets.xcassets */,
-				CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */,
-				CF77A720240D696300E8B9D7 /* Info.plist */,
 			);
 			path = Syncopate;
 			sourceTree = "<group>";
