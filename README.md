@@ -84,10 +84,7 @@ Syncopate provides a unified solution for all communication between Purdue stude
 
 * Profile Screen 
 * Chats List Screen
-* Chat Screen
 * Friends Screen
-* Add Friends Screen
-* Notification Screen
 
 **Flow Navigation** (Screen to Screen)
 
