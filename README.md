@@ -66,17 +66,22 @@ Syncopate provides a unified solution for all communication between Purdue stude
    * User can login to their account
 * Profile Screen
     * User can view their profile
+* Change Password Modal
+    * User can change their password
 * Chats List Screen
     * User can see list of their chats
 * Chat Screen
     * User can send messages
     * User can add users to a group
-* Add Friends Screen
+* Create-group Modal
+    * User can create groups
+* Friend Screen
+    * User can see a list of their friends
+* Add-Friend Modal
     * User can add friends
     * User can search for other users
-* Notification Screen
+* Notification Modal
     * User receives notifications
-* User can see a list of their friends
 
 ### 3. Navigation
 
@@ -91,15 +96,17 @@ Syncopate provides a unified solution for all communication between Purdue stude
 * Registration Screen
     * Login Screen or Profile Screen (?)
 * Login Screen
-    * Profile Screen
+    * Registration Screen -> for unregistered users
+    * Profile Screen -> for registered users
+* Profile Screen
+    * Change Password Modal
 * Chats List Screen
     * Chat Screen -> after selecting a chat
+    * Create Group Modal
 * Friends Screen
-    * None -> returns list of friends
-* Add Friends Screen
-    * None -> search bar to search friends
-* Notification Screen
-    * Maybe to friends screen (?)
+    * Returns list of friends
+    * Add Friends Modal
+    * Notification Modal
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
