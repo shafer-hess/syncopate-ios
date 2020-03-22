@@ -110,10 +110,10 @@ Syncopate provides a unified solution for all communication between Purdue stude
 
 ## Wireframes
 *We only made digital wireframes
-<img src="https://imgur.com/a/UkI8uUt" width=600>
+<img src="https://imgur.com/gallery/FXB2VFa" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://imgur.com/a/UkI8uUt" width=600>
+<img src="https://imgur.com/gallery/FXB2VFa" width=600>
 
 ### [BONUS] Interactive Prototype
 <img src= "http://g.recordit.co/rF4Mxm4y13.gif" width=250>
