@@ -109,7 +109,7 @@ Syncopate provides a unified solution for all communication between Purdue stude
     * Notification Modal
 
 ## Wireframes
-*We only made digital wireframes
+*We only made digital wireframes <br>
 <img src="https://i.imgur.com/gB18OyA.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
