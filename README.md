@@ -119,9 +119,18 @@ Syncopate provides a unified solution for all communication between Purdue stude
 <img src= "http://g.recordit.co/rF4Mxm4y13.gif" width=250>
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+#### User
+| Field | Type | Description |
+| --- | --- | ---|
+| id | int | unique user id (primary key) |
+| password | string | user's account password |
+| email | string | user's email |
+| first_name | string | user's first name |
+| last_name | string | user's last name |
+| profile_pic_url | string | stored url of user's profile picture |
+| available | bool | user's availability |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
