@@ -183,6 +183,16 @@ Syncopate provides a unified solution for all communication between Purdue stude
 | reciever | int | requested friend's user id (foreign key) | 
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+*This is our own API we built using AWS
+
+Base URL: http://18.219.112.140:3500/
+
+| Request | Endpoint | Description |
+| --- | --- | --- |
+| POST | /register | returns status 200, first name, last name, email and password |
+| POST | /login | returns status 200 and a session id (cookie) |
+| GET | /identify | gets session user's information |
+| POST | /upload-avatar | saves avatar and returns status 200 |
+| GET | /my-avatar | gets user's uploaded avatar |
+| POST | /add-message | 
+| 
