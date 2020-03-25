@@ -131,6 +131,57 @@ Syncopate provides a unified solution for all communication between Purdue stude
 | profile_pic_url | string | stored url of user's profile picture |
 | available | bool | user's availability |
 
+#### Friend
+| Field | Type | Description |
+| --- | --- | ---|
+| id | int | unique friend-pair id (primary key) |
+| user_id | int | session user's id (foreign key) |
+| friend_id | int | friend's user id (foreign key) |
+
+#### Group
+| Field | Type | Description |
+| --- | --- | ---|
+| id | int | unique group id (primary key) |
+| owner | int | user id of the user who created the group (foreign key) |
+| name | string| group name |
+| description | string | group description |
+| profile_pic_url | string | url of group profile picture |
+| direct_message | bool | direct message |
+
+#### User Group
+| Field | Type | Description |
+| --- | --- | ---|
+| user | int | session user id (foreign key) |
+| group | int | group id (foreign key) |
+| pinned | bool | pinned group |
+| archived | bool | archived group |
+| deleted | bool | deleted group |
+
+#### Cookie
+| Field | Type | Description |
+| --- | --- | ---|
+| user | int | session user id  |
+| cookie_token | string | cookie identifier |
+
+#### Message 
+| Field | Type | Description |
+| --- | --- | ---|
+| id | int | unique message id (primary key) |
+| user | int | user id (foreign key) |
+| group | int | group id (foreign key) |
+| content | string | message's content |
+| rich_content | bool | message contains non-plaintext content |
+| rich_content_url | string | message's rich content url |
+| deleted | bool | message deleted |
+| created | DateTime | message's creation date and time |
+
+#### Request 
+| Field | Type | Description |
+| --- | --- | ---|
+| id | int | unique request id (primary key) |
+| sender | int | session user's id (foreign key) |
+| reciever | int | requested friend's user id (foreign key) | 
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
