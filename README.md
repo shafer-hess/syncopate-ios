@@ -189,10 +189,27 @@ Base URL: http://18.219.112.140:3500/
 
 | Request | Endpoint | Description |
 | --- | --- | --- |
-| POST | /register | returns status 200, first name, last name, email and password |
-| POST | /login | returns status 200 and a session id (cookie) |
+| POST | /register | returns first name, last name, email and password |
+| POST | /login | returns a session id (cookie) |
 | GET | /identify | gets session user's information |
-| POST | /upload-avatar | saves avatar and returns status 200 |
+| POST | /upload-avatar | uploads avatar |
 | GET | /my-avatar | gets user's uploaded avatar |
-| POST | /add-message | 
-| 
+| POST | /add-message | returns message sent |
+| POST | /get-messages | returns list of messages from corresponding group |
+| POST | /create-group | creates a new group |
+| POST | /get-user-group | returns all groups the session user is in and all users in those groups |
+| POST | /add-user | adds a new user to the database |
+| POST | /requests | returns a list of all incoming requests for the session user |
+| POST | /sent-request | returns list of all sent request for the session user |
+| POST | /send-request | sends friend request to another user |
+| POST | /request-action | returns session user's response to request |
+| POST | /search-users | returns list of users whose name or email is contained the the search query |
+| POST | /logout | deletes session cookie |
+| POST | /load-friends | returns list of session user's friends and their info |
+|  | /delete-friend | deletes friend from session user's friends |
+| POST | /pin-chat | pins a group chat for session user |
+| POST | /set-availability | sets user's availability |
+| GET | /get-availability | gets user's availability |
+| POST | /change-password | change and updates session user's password |
+| POST | /edit-group-name | edit and update group name |
+| POST | /edit-group-description | edit and updates group description |
