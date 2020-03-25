@@ -185,8 +185,6 @@ Syncopate provides a unified solution for all communication between Purdue stude
 ### Networking
 *This is our own API we built using AWS
 
-Base URL: http://18.219.112.140:3500/
-
 | Request | Endpoint | Description |
 | --- | --- | --- |
 | POST | /register | returns first name, last name, email and password |
