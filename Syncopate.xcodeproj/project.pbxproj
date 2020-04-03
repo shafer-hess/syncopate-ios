@@ -3,30 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0C8152994C66050497CAC1F2 /* Pods_Syncopate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D1AB1D90196B6C25002D80 /* Pods_Syncopate.framework */; };
-		5A6F2112AFAF793A03439706 /* Pods_SyncopateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6944205DBDE0062D91F97A65 /* Pods_SyncopateTests.framework */; };
 		CF77A713240D696100E8B9D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A712240D696100E8B9D7 /* AppDelegate.swift */; };
 		CF77A715240D696100E8B9D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A714240D696100E8B9D7 /* SceneDelegate.swift */; };
 		CF77A717240D696100E8B9D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A716240D696100E8B9D7 /* ViewController.swift */; };
 		CF77A71A240D696100E8B9D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF77A718240D696100E8B9D7 /* Main.storyboard */; };
 		CF77A71C240D696300E8B9D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF77A71B240D696300E8B9D7 /* Assets.xcassets */; };
 		CF77A71F240D696300E8B9D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */; };
-		CF77A72A240D696300E8B9D7 /* SyncopateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A729240D696300E8B9D7 /* SyncopateTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CF77A726240D696300E8B9D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CF77A707240D696100E8B9D7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF77A70E240D696100E8B9D7;
-			remoteInfo = Syncopate;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		05D1AB1D90196B6C25002D80 /* Pods_Syncopate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syncopate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +30,6 @@
 		CF77A71B240D696300E8B9D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF77A71E240D696300E8B9D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF77A720240D696300E8B9D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF77A725240D696300E8B9D7 /* SyncopateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyncopateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF77A729240D696300E8B9D7 /* SyncopateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncopateTests.swift; sourceTree = "<group>"; };
 		CF77A72B240D696300E8B9D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D974721A9B5954171E0656A9 /* Pods-Syncopate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syncopate.release.xcconfig"; path = "Target Support Files/Pods-Syncopate/Pods-Syncopate.release.xcconfig"; sourceTree = "<group>"; };
@@ -57,14 +44,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF77A722240D696300E8B9D7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A6F2112AFAF793A03439706 /* Pods_SyncopateTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -76,7 +55,6 @@
 				40221978B109C89268624DCA /* Pods-SyncopateTests.debug.xcconfig */,
 				540ADE649B963F21EE0EB3BA /* Pods-SyncopateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -104,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				CF77A70F240D696100E8B9D7 /* Syncopate.app */,
-				CF77A725240D696300E8B9D7 /* SyncopateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,25 +131,6 @@
 			productReference = CF77A70F240D696100E8B9D7 /* Syncopate.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CF77A724240D696300E8B9D7 /* SyncopateTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CF77A731240D696300E8B9D7 /* Build configuration list for PBXNativeTarget "SyncopateTests" */;
-			buildPhases = (
-				22326D082EAD4D4D4EBF3A89 /* [CP] Check Pods Manifest.lock */,
-				CF77A721240D696300E8B9D7 /* Sources */,
-				CF77A722240D696300E8B9D7 /* Frameworks */,
-				CF77A723240D696300E8B9D7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CF77A727240D696300E8B9D7 /* PBXTargetDependency */,
-			);
-			name = SyncopateTests;
-			productName = SyncopateTests;
-			productReference = CF77A725240D696300E8B9D7 /* SyncopateTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -185,10 +143,6 @@
 				TargetAttributes = {
 					CF77A70E240D696100E8B9D7 = {
 						CreatedOnToolsVersion = 11.3.1;
-					};
-					CF77A724240D696300E8B9D7 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = CF77A70E240D696100E8B9D7;
 					};
 				};
 			};
@@ -206,7 +160,6 @@
 			projectRoot = "";
 			targets = (
 				CF77A70E240D696100E8B9D7 /* Syncopate */,
-				CF77A724240D696300E8B9D7 /* SyncopateTests */,
 			);
 		};
 /* End PBXProject section */
@@ -219,13 +172,6 @@
 				CF77A71F240D696300E8B9D7 /* LaunchScreen.storyboard in Resources */,
 				CF77A71C240D696300E8B9D7 /* Assets.xcassets in Resources */,
 				CF77A71A240D696100E8B9D7 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CF77A723240D696300E8B9D7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,28 +193,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Syncopate/Pods-Syncopate-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		22326D082EAD4D4D4EBF3A89 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SyncopateTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C0A1A071BE203359C7FBC712 /* [CP] Check Pods Manifest.lock */ = {
@@ -306,23 +230,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF77A721240D696300E8B9D7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF77A72A240D696300E8B9D7 /* SyncopateTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CF77A727240D696300E8B9D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CF77A70E240D696100E8B9D7 /* Syncopate */;
-			targetProxy = CF77A726240D696300E8B9D7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CF77A718240D696100E8B9D7 /* Main.storyboard */ = {
@@ -496,50 +404,6 @@
 			};
 			name = Release;
 		};
-		CF77A732240D696300E8B9D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40221978B109C89268624DCA /* Pods-SyncopateTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SyncopateTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = syncopate.SyncopateTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Syncopate.app/Syncopate";
-			};
-			name = Debug;
-		};
-		CF77A733240D696300E8B9D7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 540ADE649B963F21EE0EB3BA /* Pods-SyncopateTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SyncopateTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = syncopate.SyncopateTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Syncopate.app/Syncopate";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,15 +421,6 @@
 			buildConfigurations = (
 				CF77A72F240D696300E8B9D7 /* Debug */,
 				CF77A730240D696300E8B9D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CF77A731240D696300E8B9D7 /* Build configuration list for PBXNativeTarget "SyncopateTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CF77A732240D696300E8B9D7 /* Debug */,
-				CF77A733240D696300E8B9D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
