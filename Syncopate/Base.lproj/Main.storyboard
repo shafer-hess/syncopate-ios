@@ -132,7 +132,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="rR9-o6-2oO"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chats" largeTitleDisplayMode="always" id="DY5-Wu-14W"/>
+                    <navigationItem key="navigationItem" title="Chats" largeTitleDisplayMode="always" id="DY5-Wu-14W">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="YUa-uD-CKJ">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="onLogout:" destination="5jm-Qa-qbN" id="q1B-EL-Ixk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="logoutButton" destination="YUa-uD-CKJ" id="RDx-VV-Tcc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXS-Ac-uue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
