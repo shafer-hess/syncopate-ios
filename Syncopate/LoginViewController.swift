@@ -71,6 +71,10 @@ class LoginViewController: UIViewController {
                     if let data = value as? [String : Any] {
                         if(data["status"] as! String == "success") {
                             UserDefaults.standard.set(true, forKey: "loggedIn")
+                            
+                            self.emailField.text = nil
+                            self.passwordField.text = nil
+                            
                             self.performSegue(withIdentifier: "chatsSegue", sender: self)
                             
                         } else {
