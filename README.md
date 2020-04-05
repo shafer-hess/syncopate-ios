@@ -34,29 +34,29 @@ Syncopate provides a unified solution for all communication between Purdue stude
 
 **Required Must-have Stories**
 
-* User can create an account
-* User can login to their account
-* User can view their profile
-* User can see list of their chats
-* User can send messages
-* User can create groups
-* User can add users to a group
-* User can add friends
-* Users can search for other users
-* User receives notifications 
-* User can log out
+- [x] User can create an account
+- [x] User can login to their account
+- [ ] User can view their profile
+- [ ] User can see list of their chats
+- [ ] User can send messages
+- [ ] User can create groups
+- [ ] User can add users to a group
+- [ ] User can add friends
+- [ ] Users can search for other users
+- [ ] User receives notifications 
+- [x] User can log out
 
 **Optional Nice-to-have Stories**
 
-* User can edit group details
-* User can upload a profile picture
-* User can upload a group profile picture
-* User can send photo messages
-* User can send file messages
-* User can change their password
-* User can update their status
-* User can like other user messages
-* User can pin chats 
+- [ ] User can edit group details
+- [ ] User can upload a profile picture
+- [ ] User can upload a group profile picture
+- [ ] User can send photo messages
+- [ ] User can send file messages
+- [ ] User can change their password
+- [ ] User can update their status
+- [ ] User can like other user messages
+- [ ] User can pin chats 
 
 ### 2. Screen Archetypes
 
