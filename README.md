@@ -107,6 +107,14 @@ Syncopate provides a unified solution for all communication between Purdue stude
     * Returns list of friends
     * Add Friends Modal
     * Notification Modal
+    
+## Sprint 1
+- [x] User can create an account
+- [x] User can login to their account
+- [x] User can log out
+
+<img src="https://media0.giphy.com/media/eMUpbyZSivxT3vEf7U/giphy.gif?cid=4d1e4f2971d6e42fecf9a5ef03379186106312811a03c131&rid=giphy.gif" width=250>
+Link to full gif: https://i.imgur.com/A0HKRo1.gif
 
 ## Wireframes
 *We only made digital wireframes <br>
