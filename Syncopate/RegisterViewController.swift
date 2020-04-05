@@ -55,6 +55,46 @@ class RegisterViewController: UIViewController {
         }
         
         // TODO: email already taken
+        
+        // Create registration POST parameters
+        let register: [String : Any] = [
+            "first_name": firstNameField.text!,
+            "last_name": lastNameField.text!,
+            "email": emailField.text!,
+            "password": passwordField.text!,
+            "profile_pic_url": "default.png",
+            "available": false
+        ]
+        
+        // Register Endpoint
+        let url = "http://18.219.112.140:8000/api/v1/register/"
+        
+        // Register HTTP request
+        AF.request(url, method: .post, parameters: register, encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                    case .success(let value):
+                        if let data = value as? [String : Any] {
+                            if(data["status"] as! String == "success") {
+                                
+                                self.firstNameField.text = nil
+                                self.lastNameField.text = nil
+                                self.emailField.text = nil
+                                self.passwordField.text = nil
+                                self.confirmPasswordField.text = nil
+                                
+                                // Go back to Login View controller
+                                self.dismiss(animated: true, completion: nil)
+                                
+                            } else {
+                                self.present(takenEmail, animated: true)
+                            }
+                        }
+                    
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                }
+            
+        }
     }
     
     override func viewDidLoad() {
