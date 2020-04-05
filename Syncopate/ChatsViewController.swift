@@ -9,15 +9,29 @@
 import Alamofire
 import UIKit
 
-class ChatsViewController: UIViewController {
+class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     // Outlets
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
+    @IBOutlet weak var chatsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.chatsTableView.delegate = self
+        self.chatsTableView.dataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = chatsTableView.dequeueReusableCell(withIdentifier: "ChatsCell") as! ChatsCell
+        
+        return cell
     }
     
     // Logout HTTP Request
@@ -44,7 +58,7 @@ class ChatsViewController: UIViewController {
             }
         }
     }
-    
+        
     /*
     // MARK: - Navigation
 
