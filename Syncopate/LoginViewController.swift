@@ -20,8 +20,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "loggedIn") == true {
+            self.performSegue(withIdentifier: "chatsSegue", sender: self)
+        }
     }
     
     @IBAction func dismissKeyboard(_ sender: Any) {
@@ -44,6 +50,7 @@ class LoginViewController: UIViewController {
         // Check if fields are empty
         if(emailField.text!.isEmpty || passwordField.text!.isEmpty) {
             present(emptyFields, animated: true)
+            return
         }
         
         // Create Login POST Parameters
@@ -64,7 +71,11 @@ class LoginViewController: UIViewController {
                     if let data = value as? [String : Any] {
                         if(data["status"] as! String == "success") {
                             UserDefaults.standard.set(true, forKey: "loggedIn")
-                            // TODO Perform Segue to Chats Page
+                            
+                            self.emailField.text = nil
+                            self.passwordField.text = nil
+                            
+                            self.performSegue(withIdentifier: "chatsSegue", sender: self)
                             
                         } else {
                             self.present(incorrectPassword, animated: true)

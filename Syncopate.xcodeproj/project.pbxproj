@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C8152994C66050497CAC1F2 /* Pods_Syncopate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D1AB1D90196B6C25002D80 /* Pods_Syncopate.framework */; };
+		CF595F66243A2E1600545FB7 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF595F65243A2E1600545FB7 /* ChatsViewController.swift */; };
+		CF595F68243A41F500545FB7 /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF595F67243A41F500545FB7 /* ChatsCell.swift */; };
 		CF77A713240D696100E8B9D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A712240D696100E8B9D7 /* AppDelegate.swift */; };
 		CF77A715240D696100E8B9D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A714240D696100E8B9D7 /* SceneDelegate.swift */; };
 		CF77A717240D696100E8B9D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF77A716240D696100E8B9D7 /* ViewController.swift */; };
@@ -24,6 +26,8 @@
 		540ADE649B963F21EE0EB3BA /* Pods-SyncopateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SyncopateTests.release.xcconfig"; path = "Target Support Files/Pods-SyncopateTests/Pods-SyncopateTests.release.xcconfig"; sourceTree = "<group>"; };
 		6944205DBDE0062D91F97A65 /* Pods_SyncopateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SyncopateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE01298E6FE862E547CC2CF3 /* Pods-Syncopate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syncopate.debug.xcconfig"; path = "Target Support Files/Pods-Syncopate/Pods-Syncopate.debug.xcconfig"; sourceTree = "<group>"; };
+		CF595F65243A2E1600545FB7 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		CF595F67243A41F500545FB7 /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
 		CF77A70F240D696100E8B9D7 /* Syncopate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syncopate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF77A712240D696100E8B9D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF77A714240D696100E8B9D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */,
 				CF77A718240D696100E8B9D7 /* Main.storyboard */,
 				CF77A714240D696100E8B9D7 /* SceneDelegate.swift */,
+				CF595F65243A2E1600545FB7 /* ChatsViewController.swift */,
+				CF595F67243A41F500545FB7 /* ChatsCell.swift */,
 				CF77A716240D696100E8B9D7 /* ViewController.swift */,
 				CF90E48B2436BB5A00F91109 /* LoginViewController.swift */,
 				CF90E48D2436DCE700F91109 /* RegisterViewController.swift */,
@@ -230,10 +236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF595F68243A41F500545FB7 /* ChatsCell.swift in Sources */,
 				CF90E48C2436BB5A00F91109 /* LoginViewController.swift in Sources */,
 				CF90E48E2436DCE700F91109 /* RegisterViewController.swift in Sources */,
 				CF77A717240D696100E8B9D7 /* ViewController.swift in Sources */,
 				CF77A713240D696100E8B9D7 /* AppDelegate.swift in Sources */,
+				CF595F66243A2E1600545FB7 /* ChatsViewController.swift in Sources */,
 				CF77A715240D696100E8B9D7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
