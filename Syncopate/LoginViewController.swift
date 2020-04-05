@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
                     if let data = value as? [String : Any] {
                         if(data["status"] as! String == "success") {
                             UserDefaults.standard.set(true, forKey: "loggedIn")
-                            // TODO Perform Segue to Chats Page
+                            self.performSegue(withIdentifier: "chatsSegue", sender: self)
                             
                         } else {
                             self.present(incorrectPassword, animated: true)
