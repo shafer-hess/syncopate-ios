@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="EEf-ja-528">
             <objects>
-                <viewController id="0fy-Tu-l97" customClass="ViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0fy-Tu-l97" customClass="RegisterViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nbJ-n4-AOK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,6 +181,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onRegister:" destination="0fy-Tu-l97" eventType="touchUpInside" id="xnb-nh-CcB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -214,6 +217,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g0B-CA-hkT"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordField" destination="IRQ-5g-Zxa" id="uBU-Nd-uqX"/>
+                        <outlet property="emailField" destination="QcS-RU-bG6" id="yGS-Jp-FRV"/>
+                        <outlet property="firstNameField" destination="aa8-Pb-E0Q" id="QdA-NU-HvD"/>
+                        <outlet property="lastNameField" destination="lhr-tR-Bt8" id="kOe-Fx-ao5"/>
+                        <outlet property="passwordField" destination="6jh-Ql-xbK" id="r1u-I4-Q4n"/>
+                        <outlet property="registerButton" destination="lZY-EC-F1P" id="uoA-hQ-C6f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZM-ib-WdF" sceneMemberID="firstResponder"/>
             </objects>
