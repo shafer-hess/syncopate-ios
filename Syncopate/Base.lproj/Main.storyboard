@@ -336,10 +336,10 @@
             </objects>
             <point key="canvasLocation" x="1462" y="130"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="skd-ra-gzB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ydo-jz-lq0" sceneMemberID="viewController">
+                <navigationController title="Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Ydo-jz-lq0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="NJE-Tf-Ojt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="7pS-x7-Rzb">
