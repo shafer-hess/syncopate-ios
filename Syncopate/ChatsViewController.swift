@@ -13,8 +13,9 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // Outlets
     @IBOutlet weak var logoutButton: UIBarButtonItem!
-    
     @IBOutlet weak var chatsTableView: UITableView!
+    
+    var Groups: NSArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,11 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
         self.chatsTableView.delegate = self
         self.chatsTableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getUserGroups()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,6 +38,37 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = chatsTableView.dequeueReusableCell(withIdentifier: "ChatsCell") as! ChatsCell
         
         return cell
+    }
+    
+    // Get UserGroups Request
+    func getUserGroups() {
+        // UserGroups Endpoint
+        let url = "http://18.219.112.140:8000/api/v1/get-user-group/"
+        
+        // HTTP Request
+        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
+        
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? NSArray {
+                        
+                        // Getting Info From Response
+                        let dict = data[0] as! NSDictionary
+                        let user_entry = dict["users"] as! NSArray
+                        for user in user_entry {
+                            let user_info = user as! NSDictionary
+                            print(user_info["user__first_name"] as! String)
+                        }
+                        
+                        
+                        // self.groups = data
+                        // print(self.groups)
+                    }
+                
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
     
     // Logout HTTP Request
