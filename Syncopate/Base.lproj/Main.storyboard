@@ -135,7 +135,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatsCell" rowHeight="110" id="nYK-dO-fVM" customClass="ChatsCell" customModule="Syncopate" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatsCell" rowHeight="110" id="nYK-dO-fVM" customClass="ChatsCell" customModule="Syncopate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nYK-dO-fVM" id="9qU-he-ohq">
@@ -189,6 +189,7 @@
                                             <outlet property="descriptionLabel" destination="B4c-XN-bht" id="EaX-S2-mOz"/>
                                             <outlet property="nameLabel" destination="JH1-aE-rUZ" id="ybG-IQ-hlB"/>
                                             <outlet property="profileView" destination="mEN-ig-lPH" id="WKi-U5-amk"/>
+                                            <segue destination="Xbm-eZ-rzA" kind="show" id="qs7-UY-Dsj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -212,7 +213,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXS-Ac-uue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3280.8000000000002" y="129.31034482758622"/>
+            <point key="canvasLocation" x="3313" y="-580"/>
+        </scene>
+        <!--Chat Details-->
+        <scene sceneID="jqk-Co-DY5">
+            <objects>
+                <viewController title="Chat Details" id="Xbm-eZ-rzA" customClass="ChatDetailsViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hpa-4b-Ph7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="wbo-9V-Wx9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="i1q-5h-K6A"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tbt-af-XGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4188" y="-580"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="EEf-ja-528">
@@ -358,7 +375,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UD-Kz-Hst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2371.0144927536235" y="129.91071428571428"/>
+            <point key="canvasLocation" x="2402" y="-580"/>
         </scene>
     </scenes>
     <resources>
