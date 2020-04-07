@@ -52,7 +52,12 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let imageUrl = URL(string: "http://18.219.112.140/images/avatars/default.png")!
         
         cell.nameLabel.text = group["group__name"] as? String
-        cell.descriptionLabel.text = group["group__description"] as? String
+        
+        if(group["group__description"] as? String == "") {
+            cell.descriptionLabel.isHidden = true
+        } else {
+            cell.descriptionLabel.text = group["group__description"] as? String
+        }
         cell.profileView.af.setImage(withURL: imageUrl)
         
         return cell
