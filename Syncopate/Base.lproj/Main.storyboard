@@ -221,6 +221,38 @@
             </objects>
             <point key="canvasLocation" x="3313" y="-580"/>
         </scene>
+        <!--Friends View-->
+        <scene sceneID="3fP-21-IGc">
+            <objects>
+                <viewController title="Friends View" id="UxI-Nx-hoY" customClass="FriendsViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CmD-ZD-BI6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="eMd-du-fyG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="W9t-MD-8cb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UnF-dJ-cbP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3313" y="129"/>
+        </scene>
+        <!--Profile View-->
+        <scene sceneID="ks7-f3-R2V">
+            <objects>
+                <viewController title="Profile View" id="E7O-L8-E9v" customClass="ProfileViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="452-mJ-HKJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dxl-eU-V7L"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lLd-dK-n5Q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0nZ-TY-TRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3313" y="883"/>
+        </scene>
         <!--Chat Details-->
         <scene sceneID="jqk-Co-DY5">
             <objects>
@@ -351,13 +383,15 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="YZP-hB-YXj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VhJ-mK-gT6">
+                    <tabBar key="tabBar" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="VhJ-mK-gT6">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="Ydo-jz-lq0" kind="relationship" relationship="viewControllers" id="A6w-BI-7BZ"/>
+                        <segue destination="QAA-GG-gGY" kind="relationship" relationship="viewControllers" id="OHb-gU-eH6"/>
+                        <segue destination="ADn-B8-PuV" kind="relationship" relationship="viewControllers" id="kWk-tf-vK8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEQ-Zp-bFl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -368,7 +402,7 @@
         <scene sceneID="skd-ra-gzB">
             <objects>
                 <navigationController title="Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Ydo-jz-lq0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="NJE-Tf-Ojt"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="bubble.left.and.bubble.right.fill" catalog="system" id="NJE-Tf-Ojt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="7pS-x7-Rzb">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -383,10 +417,50 @@
             </objects>
             <point key="canvasLocation" x="2402" y="-580"/>
         </scene>
+        <!--Friends-->
+        <scene sceneID="aCo-Mr-ZIL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QAA-GG-gGY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.2.fill" catalog="system" id="gj4-CV-euv"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MFF-pc-kSo">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UxI-Nx-hoY" kind="relationship" relationship="rootViewController" id="1OA-GG-pcY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6V-Hz-8b9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2401" y="129"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="k9L-f2-oMa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ADn-B8-PuV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle.fill" catalog="system" id="YQ4-AP-Bph"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yht-LG-ar5">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="E7O-L8-E9v" kind="relationship" relationship="rootViewController" id="2DW-2b-X1K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBJ-7l-HZ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2401" y="882"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Circles" width="241" height="241"/>
         <image name="SyncopateLogo" width="338" height="90.666664123535156"/>
+        <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
