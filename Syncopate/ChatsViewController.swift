@@ -114,12 +114,12 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller
         
-        let cell = sender as! UITableViewCell
-        let indexPath = chatsTableView.indexPath(for: cell)!
-        let group = groups[indexPath.row] as! NSDictionary
-        let chatDetails = segue.destination as! ChatDetailsViewController
-        chatDetails.group = group
-        
-        chatsTableView.deselectRow(at: indexPath, animated: true)
+//        let cell = sender as! UITableViewCell
+//        let indexPath = chatsTableView.indexPath(for: cell)!
+//        let group = groups[indexPath.row] as! NSDictionary
+//        let chatDetails = segue.destination as! ChatDetailsViewController
+//        chatDetails.group = group
+//        
+//        chatsTableView.deselectRow(at: indexPath, animated: true)
     }
 }
