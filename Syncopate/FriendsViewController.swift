@@ -24,11 +24,15 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
+        
+        friendsTableView.rowHeight = UITableView.automaticDimension
+        friendsTableView.estimatedRowHeight = 150
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getFriendsList()
+        friendsTableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
@@ -39,14 +43,24 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Retrieve friends info
         let friend = friends[indexPath.row] as! NSDictionary
-        print("Here")
+ 
         // Populate cells
-        let imageURL = URL(string: "http://18.219.112.140/images/avatars/default.png")!
+        let baseURL = "http://18.219.112.140/images/avatars/"
+        let picURL = (friend["profile_pic_url"] as? String)!
+        let imageURL = URL(string: (baseURL + picURL))!
         let first_name = friend["first_name"] as? String
         let last_name = friend["last_name"] as? String
+        let email = friend["email"] as? String
+        let username = (email?.replacingOccurrences(of: "@purdue.edu", with: ""))!
         
         cell.nameLabel.text = ((first_name)!) + " " + ((last_name)!)
         cell.profileImage.af.setImage(withURL: imageURL)
+        cell.usernameLabel.text = username 
+        
+        // Make the profile pic circular
+        cell.profileImage.layer.masksToBounds = false
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
+        cell.profileImage.clipsToBounds = true
         
         return cell
     }
@@ -61,6 +75,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 case .success(let value):
                     if let data = value as? [String : Any] {
                         self.friends = data["friends"] as! NSArray
+                        self.friendsTableView.reloadData()
                 }
                 
                 case .failure(let error):

@@ -242,13 +242,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6L6-GB-XX8">
-                                                    <rect key="frame" x="83" y="28" width="48" height="21"/>
+                                                    <rect key="frame" x="83" y="28" width="47.666666666666657" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPk-Yv-dTY">
-                                                    <rect key="frame" x="83" y="57" width="79" height="21"/>
+                                                    <rect key="frame" x="83" y="57" width="78.666666666666686" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -257,18 +257,23 @@
                                                     <rect key="frame" x="15" y="26" width="60" height="59.999999999999986"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="qGN-HR-HWi"/>
-                                                        <constraint firstAttribute="height" constant="61.329999999999998" id="rAb-WT-LZD"/>
+                                                        <constraint firstAttribute="width" constant="60" id="IoJ-Zs-n58"/>
+                                                        <constraint firstAttribute="height" constant="61.329999999999998" id="pHA-Bf-inf"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zA2-UP-ZHd" firstAttribute="leading" secondItem="9mj-We-NN0" secondAttribute="leadingMargin" id="3KE-0T-jsB"/>
-                                                <constraint firstItem="BPk-Yv-dTY" firstAttribute="top" secondItem="6L6-GB-XX8" secondAttribute="bottom" constant="8" id="Uxk-98-Edf"/>
-                                                <constraint firstItem="6L6-GB-XX8" firstAttribute="leading" secondItem="zA2-UP-ZHd" secondAttribute="trailing" constant="8" id="fDS-ed-m5j"/>
-                                                <constraint firstItem="zA2-UP-ZHd" firstAttribute="top" secondItem="9mj-We-NN0" secondAttribute="topMargin" constant="14" id="kQg-Bh-qrN"/>
-                                                <constraint firstItem="6L6-GB-XX8" firstAttribute="top" secondItem="9mj-We-NN0" secondAttribute="topMargin" constant="17" id="shJ-sc-1Mt"/>
-                                                <constraint firstItem="BPk-Yv-dTY" firstAttribute="leading" secondItem="zA2-UP-ZHd" secondAttribute="trailing" constant="8" id="xGU-yd-adU"/>
+                                                <constraint firstItem="BPk-Yv-dTY" firstAttribute="leading" secondItem="zA2-UP-ZHd" secondAttribute="trailing" constant="8" id="298-u4-Eij"/>
+                                                <constraint firstItem="zA2-UP-ZHd" firstAttribute="leading" secondItem="9mj-We-NN0" secondAttribute="leadingMargin" id="5VL-nc-VP3"/>
+                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="6L6-GB-XX8" secondAttribute="trailing" constant="229.33000000000001" id="6WW-pJ-myw"/>
+                                                <constraint firstItem="zA2-UP-ZHd" firstAttribute="top" secondItem="9mj-We-NN0" secondAttribute="topMargin" constant="14" id="C07-ed-8cd"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="BPk-Yv-dTY" secondAttribute="bottom" constant="21" id="CKy-FE-gHL"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zA2-UP-ZHd" secondAttribute="bottom" constant="12.67" id="DNR-oS-b7w"/>
+                                                <constraint firstItem="6L6-GB-XX8" firstAttribute="top" secondItem="9mj-We-NN0" secondAttribute="topMargin" constant="17" id="Md2-yC-kd3"/>
+                                                <constraint firstItem="6L6-GB-XX8" firstAttribute="leading" secondItem="zA2-UP-ZHd" secondAttribute="trailing" constant="8" id="QqK-m3-9eq"/>
+                                                <constraint firstItem="6L6-GB-XX8" firstAttribute="leading" secondItem="zA2-UP-ZHd" secondAttribute="trailing" constant="8" id="TqU-0b-oqZ"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="BPk-Yv-dTY" secondAttribute="trailing" constant="5" id="d4x-6N-16X"/>
+                                                <constraint firstItem="BPk-Yv-dTY" firstAttribute="top" secondItem="6L6-GB-XX8" secondAttribute="bottom" constant="8" id="hqO-Dy-5CE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -284,7 +289,7 @@
                         <viewLayoutGuide key="safeArea" id="eMd-du-fyG"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Friends" id="W9t-MD-8cb">
+                    <navigationItem key="navigationItem" title="My Friends" id="W9t-MD-8cb">
                         <barButtonItem key="rightBarButtonItem" title="Add Friend Button" image="plus.circle" catalog="system" width="10" id="Y1N-9W-QYZ">
                             <connections>
                                 <action selector="addFriendActionButton:" destination="UxI-Nx-hoY" id="4r5-8I-Rp9"/>
