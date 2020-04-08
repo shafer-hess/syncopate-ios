@@ -100,6 +100,11 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         return messages.count
     }
     
+    func randomString(length: Int) -> String {
+      let letters = "0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
     // HHTP Request to Retrieve Messages and populate messages array
     func getMessages(groupId: Int) {
         // Request Variables
@@ -181,7 +186,6 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
        
         let kind: MessageKind
         if(message["rich_content"] as! Bool) {
-            //if let photo: PhotoMediaItem = PhotoMediaItem(image: makeImage(message: message)) {
             if let img: UIImage = makeImage(message: message) {
                 let photo = PhotoMediaItem(image: img)
                 kind = .photo(photo)
@@ -200,14 +204,47 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     
     // MARK: - SocketIO Functions
     func receiveData(data: Any) {
-        
-        print(data)
-        
+        // Retrieve Message Content
         let message = data as! NSArray
-        let message_content = message[0] as! NSDictionary
+        let messageContent = message[0] as! NSDictionary
+        let user = messageContent["user_info"] as! NSDictionary
         
-        print(message_content)
+        // Create MessageKit Message From Received Socket Data
+        let newMessage = [
+            "id": Int(randomString(length: 10)),
+            "user": user["id"],
+            "rich_content": messageContent["rich_content"],
+            "content": messageContent["content"],
+            "user__first_name": user["first_name"],
+            "user__last_name": user["last_name"]
+        ]
+        
+        // Try to create MessageType entry
+        let sender = makeSender(message: newMessage as NSDictionary)
+        if let entry = makeMessage(sender: sender, message: newMessage as NSDictionary) {
+            self.messages.append(entry)
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToBottom()
+        }
     }
+    
+  
+    // Example Message retrieved by socket
+//    {
+//        content = "hello again";
+//        "group_id" = 39;
+//        message = "hello again";
+//        "rich_content" = 0;
+//        user = "Demo 1";
+//        "user_info" =     {
+//            available = 0;
+//            email = "demo1@purdue.edu";
+//            "first_name" = "Demo 1";
+//            id = 31;
+//            "last_name" = User;
+//            "profile_pic_url" = "http://18.219.112.140/images/avatars/default.png";
+//        };
+//    }
 
     /*
     // MARK: - Navigation
