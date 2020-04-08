@@ -33,7 +33,6 @@ struct PhotoMediaItem: MediaItem {
         self.size = CGSize(width: image!.size.width, height: image!.size.height)
         self.placeholderImage = UIImage()
     }
-    
 }
 
 class MessageKitViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
