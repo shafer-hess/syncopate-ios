@@ -22,6 +22,20 @@ struct Message: MessageType {
     var kind: MessageKind
 }
 
+struct PhotoMediaItem: MediaItem {
+    var url: URL?
+    var image: UIImage?
+    var placeholderImage: UIImage
+    var size: CGSize
+    
+    init(image: UIImage?) {
+        self.image = image
+        self.size = CGSize(width: image!.size.width, height: image!.size.height)
+        self.placeholderImage = UIImage()
+    }
+    
+}
+
 class MessageKitViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
     
     var messages: [MessageType] = []
@@ -74,22 +88,14 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
                                 let message = entry as! NSDictionary
                                 
                                 // Create Sender Struct from Message Content
-                                let senderId = String(message["user"] as! Int)
-                                let displayName = (message["user__first_name"] as! String) + " " + (message["user__last_name"] as! String)
-                                let sender = Sender(senderId: senderId, displayName: displayName)
-                                
+                                let sender = self.makeSender(message: message)
+                                                                
                                 // Create MessageType Struct from Message Content
-                                let messageId = String(message["id"] as! Int)
-                                let kind: MessageKind
-                                if(message["rich_content"] as! Bool) {
-                                    kind = .text("Photo")
-                                } else {
-                                    kind = .text(message["content"] as! String)
+                                if let entry = self.makeMessage(sender: sender, message: message) {
+                                    self.messages.append(entry)
+                                    self.messagesCollectionView.reloadData()
+                                    self.messagesCollectionView.scrollToBottom()
                                 }
-                                
-                                let entry = Message(sender: sender, messageId: messageId, sentDate: Date(), kind: kind)
-                                self.messages.append(entry)
-                                self.messagesCollectionView.reloadData()
                             }
                                                         
                         } else {
@@ -101,6 +107,60 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
                     print(error.localizedDescription)
             }
         }
+    }
+    
+    func makeImage(message: NSDictionary) -> UIImage? {
+        // Retrieve Base64 Encoded Image
+        let base64str: String? = message["content"] as? String
+        
+        var returnImage: UIImage? = nil
+        if let data = base64str {
+            let temp = data.components(separatedBy: ",")
+            
+            var decoded: Data
+            if(temp.count == 1) {
+                decoded = Data(base64Encoded: temp[0], options: .ignoreUnknownCharacters)!
+            } else {
+                if let data = Data(base64Encoded: temp[1], options: .ignoreUnknownCharacters) {
+                    decoded = data
+                } else {
+                    return nil
+                }
+            }
+            
+            returnImage = UIImage(data: decoded)
+        }
+        
+        return returnImage
+    }
+    
+    func makeSender(message: NSDictionary) -> Sender {
+        let senderId = String(message["user"] as! Int)
+        let displayName = (message["user__first_name"] as! String) + " " + (message["user__last_name"] as! String)
+        
+        return Sender(senderId: senderId, displayName: displayName)
+    }
+    
+    func makeMessage(sender: Sender, message: NSDictionary) -> Message? {
+        let messageId = String(message["id"] as! Int)
+       
+        let kind: MessageKind
+        if(message["rich_content"] as! Bool) {
+            //if let photo: PhotoMediaItem = PhotoMediaItem(image: makeImage(message: message)) {
+            if let img: UIImage = makeImage(message: message) {
+                let photo = PhotoMediaItem(image: img)
+                kind = .photo(photo)
+            } else {
+                // kind = .attributedText(NSAttributedString(string: "There was an error loading this image"))
+                return nil
+            }
+            
+        } else {
+            let attrStr = NSAttributedString(string: message["content"] as! String)
+            kind = .attributedText(attrStr)
+        }
+        
+        return Message(sender: sender, messageId: messageId, sentDate: Date(), kind: kind)
     }
 
     /*
