@@ -8,7 +8,10 @@
 
 import Alamofire
 import MessageKit
+import SocketIO
 import UIKit
+
+// MARK: - MessageKit Structs
 
 struct Sender: SenderType {
     var senderId: String
@@ -36,24 +39,55 @@ struct PhotoMediaItem: MediaItem {
 }
 
 class MessageKitViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
+    // Data passed from Chats Page
+    var group: NSDictionary = [:]
+    var groupId: Int = -1
+    var currUser: NSDictionary = [:]
     
+    // Array to hold formatted messages retrieved from database
     var messages: [MessageType] = []
 
+    // SocketIO Manager and Socket
+    let manager = SocketManager(socketURL: URL(string: "http://18.219.112.140:3001")!, config: [])
+    var socket: SocketIOClient!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Get Group ID
+        groupId = group["group__id"] as! Int
         
         // Initialize MessageKit Collection View
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
-        getMessages(groupId: 39)
+        getMessages(groupId: groupId)
+        
+        // SocketIO Setup
+        socket = manager.defaultSocket
+        
+        socket.on(clientEvent: .connect) { data, ack in
+            print("socket connected")
+        }
+        
+        socket.on("push to clients") { data, ack in
+            self.receiveData(data: data)
+        }
+        
+        socket.connect()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        socket.emit("subscribeToRoom", String(groupId))
     }
 
     // MessagKit Required Protocol Stubs
     func currentSender() -> SenderType {
-        let userId: String = "18"
-        let username: String = "Shafer Hess"
+        // Retrieve current user information and establish as currentSender
+        let userId: String = String(currUser["id"] as! Int)
+        let username: String = (currUser["first_name"] as! String) + " " + (currUser["last_name"] as! String)
         
         return Sender(senderId: userId, displayName: username)
     }
@@ -133,6 +167,8 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         return returnImage
     }
     
+    // MARK: - MessageKit Functions
+    
     func makeSender(message: NSDictionary) -> Sender {
         let senderId = String(message["user"] as! Int)
         let displayName = (message["user__first_name"] as! String) + " " + (message["user__last_name"] as! String)
@@ -160,6 +196,17 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         }
         
         return Message(sender: sender, messageId: messageId, sentDate: Date(), kind: kind)
+    }
+    
+    // MARK: - SocketIO Functions
+    func receiveData(data: Any) {
+        
+        print(data)
+        
+        let message = data as! NSArray
+        let message_content = message[0] as! NSDictionary
+        
+        print(message_content)
     }
 
     /*

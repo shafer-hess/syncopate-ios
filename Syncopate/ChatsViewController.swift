@@ -19,6 +19,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let myRefreshController = UIRefreshControl()
     
     var groups: NSArray = []
+    var currUser: NSDictionary = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        getCurrentUser()
         getUserGroups()
         self.chatsTableView.reloadData()
     }
@@ -85,6 +87,26 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func getCurrentUser() {
+        // Identify User
+        let url = "http://18.219.112.140:8000/api/v1/identify/"
+        
+        // Identidy HTTP Request
+        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
+            
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        // Store Current User information
+                        self.currUser = data as NSDictionary
+                    }
+                
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
     // Logout HTTP Request
     @IBAction func onLogout(_ sender: Any) {
         // Login Endpoint
@@ -114,12 +136,16 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller
         
-//        let cell = sender as! UITableViewCell
-//        let indexPath = chatsTableView.indexPath(for: cell)!
-//        let group = groups[indexPath.row] as! NSDictionary
-//        let chatDetails = segue.destination as! ChatDetailsViewController
-//        chatDetails.group = group
-//        
-//        chatsTableView.deselectRow(at: indexPath, animated: true)
+        let cell = sender as! UITableViewCell
+        
+        let indexPath = chatsTableView.indexPath(for: cell)!
+        
+        let group = groups[indexPath.row] as! NSDictionary
+        
+        let chatDetails = segue.destination as! MessageKitViewController
+        chatDetails.group = group
+        chatDetails.currUser = currUser
+        
+        chatsTableView.deselectRow(at: indexPath, animated: true)
     }
 }
