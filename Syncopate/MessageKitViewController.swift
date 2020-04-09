@@ -8,6 +8,7 @@
 
 import Alamofire
 import MessageKit
+import InputBarAccessoryView
 import SocketIO
 import UIKit
 
@@ -38,7 +39,8 @@ struct PhotoMediaItem: MediaItem {
     }
 }
 
-class MessageKitViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
+class MessageKitViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate, InputBarAccessoryViewDelegate {
+
     // Data passed from Chats Page
     var group: NSDictionary = [:]
     var groupId: Int = -1
@@ -61,6 +63,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
         
         getMessages(groupId: groupId)
         
@@ -83,7 +86,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         socket.emit("subscribeToRoom", String(groupId))
     }
 
-    // MessagKit Required Protocol Stubs
+    //MARK: -  MessagKit Delegate Required Protocol Stubs
     func currentSender() -> SenderType {
         // Retrieve current user information and establish as currentSender
         let userId: String = String(currUser["id"] as! Int)
@@ -99,6 +102,40 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
+    
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let name = message.sender.displayName
+        let string = NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        
+        // Check if message is not first message
+        if(indexPath.section != 0) {
+            // Check if previous message sender is the same as current message sender, add name if different
+            let prev = messages[indexPath.section - 1]
+            if(prev.sender.displayName != message.sender.displayName) {
+                return string
+            }
+        } else {
+            return string
+        }
+        
+        return nil
+    }
+    
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        
+        if(indexPath.section != 0) {
+            let prev = messages[indexPath.section - 1]
+            if(prev.sender.displayName != message.sender.displayName) {
+                return 35
+            }
+        } else {
+            return 35
+        }
+        
+        return 0
+    }
+    
+    // MARK: - Helper Functions
     
     func randomString(length: Int) -> String {
       let letters = "0123456789"
@@ -147,6 +184,8 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         }
     }
     
+    // MARK: - MessageKit Functions
+    
     func makeImage(message: NSDictionary) -> UIImage? {
         // Retrieve Base64 Encoded Image
         let base64str: String? = message["content"] as? String
@@ -172,8 +211,6 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         return returnImage
     }
     
-    // MARK: - MessageKit Functions
-    
     func makeSender(message: NSDictionary) -> Sender {
         let senderId = String(message["user"] as! Int)
         let displayName = (message["user__first_name"] as! String) + " " + (message["user__last_name"] as! String)
@@ -190,19 +227,22 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
                 let photo = PhotoMediaItem(image: img)
                 kind = .photo(photo)
             } else {
-                // kind = .attributedText(NSAttributedString(string: "There was an error loading this image"))
                 return nil
             }
             
         } else {
-            let attrStr = NSAttributedString(string: message["content"] as! String)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = NSTextAlignment.left
+            
+            let attrStr = NSAttributedString(string: message["content"] as! String, attributes: [NSAttributedString.Key.paragraphStyle:paragraphStyle])
             kind = .attributedText(attrStr)
         }
         
         return Message(sender: sender, messageId: messageId, sentDate: Date(), kind: kind)
     }
     
-    // MARK: - SocketIO Functions
+    // MARK: - Functions to Receive and Send Data
+    
     func receiveData(data: Any) {
         // Retrieve Message Content
         let message = data as! NSArray
@@ -217,6 +257,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             "content": messageContent["content"],
             "user__first_name": user["first_name"],
             "user__last_name": user["last_name"]
+
         ]
         
         // Try to create MessageType entry
@@ -226,6 +267,10 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             self.messagesCollectionView.reloadData()
             self.messagesCollectionView.scrollToBottom()
         }
+    }
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        print("hit send", text)
     }
     
   
