@@ -69,10 +69,10 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
                 self.sendFriendRequest(email: email)
             }
-            let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
+            let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
             
             options.addAction(yesButton)
-            options.addAction(noButton)
+            options.addAction(cancelButton)
             
             self.present(options, animated: true)
         }

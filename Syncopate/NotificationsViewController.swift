@@ -65,10 +65,10 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
                     self.updateRequest(request_id: id, reply: true)
             }
-            let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
+            let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
                 
             options.addAction(yesButton)
-            options.addAction(noButton)
+            options.addAction(cancelButton)
                 
             self.present(options, animated: true)
         }
@@ -77,10 +77,10 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             // Alert controller
             let options = UIAlertController(title: "Accept Request", message: "Are you sure you want to deny \(fullname)'s friend request?", preferredStyle: .alert)
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in }
-            let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
+            let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
                 
             options.addAction(yesButton)
-            options.addAction(noButton)
+            options.addAction(cancelButton)
                 
             self.present(options, animated: true)
         }
