@@ -357,6 +357,9 @@
                                                         <constraint firstAttribute="width" constant="25" id="e1v-nO-yoq"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="add-user"/>
+                                                    <connections>
+                                                        <action selector="onAddButton:" destination="gBF-yC-AcN" eventType="touchUpInside" id="s2r-Qt-UgK"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

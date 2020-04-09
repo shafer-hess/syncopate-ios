@@ -15,15 +15,22 @@ class AddFriendCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     
+    // add friend button closure property
+    var addButtonAction: (()->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.addButton.addTarget(self, action: #selector(onAddButton(_:)), for: .touchUpInside)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func onAddButton(_ sender: UIButton) {
+        addButtonAction?()
+    }
 }

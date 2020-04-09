@@ -33,6 +33,12 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         addFriendTableView.reloadData()
     }
     
+    func getEmail(at indexPath: IndexPath) -> String {
+        let friend = friends[indexPath.row] as! NSDictionary
+        let email = friend["email"]
+        return email as! String
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
@@ -43,14 +49,16 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         // Retrieve friends info
         let friend = friends[indexPath.row] as! NSDictionary
         
+        //email = friend["email"]
+        
         // Populate cells
         let baseURL = "http://18.219.112.140/images/avatars/"
         let picURL = (friend["profile_pic_url"] as? String)!
         let imageURL = URL(string: (baseURL + picURL))!
         let first_name = friend["first_name"] as? String
         let last_name = friend["last_name"] as? String
-        let email = friend["email"] as? String
-        let username = (email?.replacingOccurrences(of: "@purdue.edu", with: ""))!
+        let email = friend["email"] as! String
+        let username = (email.replacingOccurrences(of: "@purdue.edu", with: ""))
         
         cell.nameLabel.text = ((first_name)!) + " " + ((last_name)!)
         cell.profileImage.af.setImage(withURL: imageURL)
@@ -61,6 +69,22 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
         cell.profileImage.clipsToBounds = true
         
+        // add friend button is clicked 
+        cell.addButtonAction = { [unowned self] in
+            // Alert controller
+            let options = UIAlertController(title: "Add Friend", message: "Are you sure you want to add Bob as a friend?", preferredStyle: .alert)
+            let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
+                print("Here in yes")
+                self.sendFriendRequest(email: email)
+            }
+            let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
+            
+            options.addAction(yesButton)
+            options.addAction(noButton)
+            
+            self.present(options, animated: true)
+        }
+        
         return cell
     }
     
@@ -68,18 +92,18 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         self.userSearchBar.endEditing(true)
     }
     
+    // Update list as search bar text changes
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         getQueryResult()
         addFriendTableView.reloadData()
     }
     
     func getQueryResult() {
-        // Create registration POST parameters
+        // Create search user POST parameters
         let query: [String : Any] = [
             "query": userSearchBar.text!
         ]
         
-        print("Search query: \(userSearchBar.text!)")
         // Search query endpoint
         let url = "http://18.219.112.140:8000/api/v1/search-users/"
         
@@ -91,7 +115,6 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                         //self.searchBar = nil
                         
                         self.friends = data["users"] as! NSArray
-                        print(self.friends)
                         self.addFriendTableView.reloadData()
                     }
                 
@@ -100,6 +123,41 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
         }
     }
+    
+    // get the friend email to send friend request
+    func sendFriendRequest(email: String) {
+        // TODO
+        // Send message request
+        // Get incoming message request
+        // Get outgoing message request
+        // Update message request
+        //let friend = friends[indexPath.row] as! NSDictionary
+        
+        // Create send message request POST parameters
+        let param: [String : Any] = [
+            //"email": friend["email"] as! String
+            "email": email
+        ]
+        
+        // Send message request endpoint
+        let url = "http://18.219.112.140:8000/api/v1/send-request/"
+        
+        // HTTP request
+        AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        if(data["status"] as! String == "success") {
+                            self.addFriendTableView.reloadData()
+                        }
+                    }
+                
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
