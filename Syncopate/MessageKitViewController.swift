@@ -98,6 +98,17 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         super.viewDidAppear(animated)
         socket.emit("subscribeToRoom", String(groupId))
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
 
     //MARK: -  MessagKit Protocol Stubs and Customization
     func currentSender() -> SenderType {
@@ -172,7 +183,26 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             }
         }
     }
-        
+    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        let closure = { (view: MessageContainerView) in
+           view.layer.cornerRadius = 15.0
+            
+            let currSender = self.currentSender()
+            if(currSender.displayName == message.sender.displayName) {
+                view.layer.backgroundColor = UIColor.systemBlue.cgColor
+            } else {
+                // Check system mode
+                if(self.traitCollection.userInterfaceStyle == .dark) {
+                    view.layer.backgroundColor = UIColor.darkGray.cgColor
+                } else {
+                    view.layer.backgroundColor = UIColor.lightGray.cgColor
+                }
+            }
+        }
+        return .custom(closure)
+    }
+    
     // MARK: - Helper Functions
     
     func randomString(length: Int) -> String {
@@ -272,11 +302,18 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             }
             
         } else {
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = NSTextAlignment.left
+
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.alignment = .left
             
-            let attrStr = NSAttributedString(string: message["content"] as! String, attributes: [NSAttributedString.Key.paragraphStyle:paragraphStyle])
+            let attrs = [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .medium)
+            ]
+            
+            let attrStr = NSAttributedString(string: message["content"] as! String, attributes: attrs)
             kind = .attributedText(attrStr)
+            // kind = .text(message["content"] as! String)
         }
         
         return Message(sender: sender, messageId: messageId, sentDate: Date(), kind: kind, profileUrl: imageUrl)
@@ -348,6 +385,26 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
   
         inputBar.inputTextView.text = nil
         socket.emit("new message", newMessage)
+    }
+    
+    // MARK: - Keyboard View Insets
+    
+    @objc func keyboardWillAppear(_ notification: NSNotification) {
+        if self.view.frame.origin.y == 0{
+            self.view.frame.origin.y -= 100
+            self.messagesCollectionView.scrollToBottom()
+        }
+    }
+    
+    @objc func keyboardWillDisappear(_ notification: NSNotification) {
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y += 100
+            self.messagesCollectionView.scrollToBottom()
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
     }
     
     /*
