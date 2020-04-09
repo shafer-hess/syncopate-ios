@@ -319,27 +319,37 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     }
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        print("hit send", text)
+        // Format Message for MessageKit
+        var profileUrl: String = currUser["profile_pic_url"] as! String
+        
+        let split: [String]
+        if(profileUrl.contains("http://18.219.112.140/images/avatars/")) {
+            split = profileUrl.components(separatedBy: "http://18.219.112.140/images/avatars/")
+            profileUrl = split[1]
+        }
+        
+        let newMessage = [
+            "id": Int(randomString(length: 10)),
+            "user": currUser["id"],
+            "group_id": groupId,
+            "rich_content": false,
+            "content": text,
+            "message": text,
+            "user__first_name": currUser["first_name"] as! String,
+            "user__last_name": currUser["last_name"] as! String,
+            "user__profile_pic_url": profileUrl,
+            "profile_pic_url": profileUrl,
+            "user_info": [ "id": currUser["id"],
+                           "profile_pic_url": profileUrl,
+                           "first_name": currUser["first_name"] as! String,
+                           "last_name": currUser["last_name"] as! String
+                        ]
+        ]
+  
+        inputBar.inputTextView.text = nil
+        socket.emit("new message", newMessage)
     }
     
-  
-    // Example Message retrieved by socket
-//    {
-//        content = "hello again";
-//        "group_id" = 39;
-//        message = "hello again";
-//        "rich_content" = 0;
-//        user = "Demo 1";
-//        "user_info" =     {
-//            available = 0;
-//            email = "demo1@purdue.edu";
-//            "first_name" = "Demo 1";
-//            id = 31;
-//            "last_name" = User;
-//            "profile_pic_url" = "http://18.219.112.140/images/avatars/default.png";
-//        };
-//    }
-
     /*
     // MARK: - Navigation
 
