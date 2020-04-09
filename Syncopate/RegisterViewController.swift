@@ -54,8 +54,6 @@ class RegisterViewController: UIViewController {
             present(insufficientEmail, animated: true)
         }
         
-        // TODO: email already taken
-        
         // Create registration POST parameters
         let register: [String : Any] = [
             "first_name": firstNameField.text!,

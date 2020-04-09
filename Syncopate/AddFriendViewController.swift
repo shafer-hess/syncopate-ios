@@ -1,8 +1,8 @@
 //
-//  FriendsViewController.swift
+//  AddFriendViewController.swift
 //  Syncopate
 //
-//  Created by Shafer Hess on 4/7/20.
+//  Created by Emily Ou on 4/8/20.
 //  Copyright © 2020 Syncopate. All rights reserved.
 //
 
@@ -10,40 +10,39 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddFriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     // Outlets
-    @IBOutlet weak var addFriendButton: UIBarButtonItem!
-    @IBOutlet weak var friendsTableView: UITableView!
+    @IBOutlet weak var userSearchBar: UISearchBar!
+    @IBOutlet weak var addFriendTableView: UITableView!
     var friends: NSArray = []
     
-    @IBAction func addFriendActionButton(_ sender: Any) {
-    }
-    
     override func viewDidLoad() {
-         super.viewDidLoad()
-
-        friendsTableView.delegate = self
-        friendsTableView.dataSource = self
+        super.viewDidLoad()
         
-        friendsTableView.rowHeight = UITableView.automaticDimension
-        friendsTableView.estimatedRowHeight = 150
+        addFriendTableView.dataSource = self
+        addFriendTableView.delegate = self
+        userSearchBar.delegate = self
+                
+        addFriendTableView.rowHeight = UITableView.automaticDimension
+        addFriendTableView.estimatedRowHeight = 150
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getFriendsList()
-        friendsTableView.reloadData()
+        getQueryResult()
+        addFriendTableView.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendsCell") as! FriendsCell
+        let cell = addFriendTableView.dequeueReusableCell(withIdentifier: "AddFriendCell") as! AddFriendCell
         
         // Retrieve friends info
         let friend = friends[indexPath.row] as! NSDictionary
- 
+        
         // Populate cells
         let baseURL = "http://18.219.112.140/images/avatars/"
         let picURL = (friend["profile_pic_url"] as? String)!
@@ -55,7 +54,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.nameLabel.text = ((first_name)!) + " " + ((last_name)!)
         cell.profileImage.af.setImage(withURL: imageURL)
-        cell.usernameLabel.text = username 
+        cell.usernameLabel.text = username
         
         // Make the profile pic circular
         cell.profileImage.layer.masksToBounds = false
@@ -65,27 +64,42 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func getFriendsList() {
-        // Friends List Endpoint
-        let url = "http://18.219.112.140:8000/api/v1/load-friends/"
-
-        // HTTP Request
-        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        self.userSearchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        getQueryResult()
+        addFriendTableView.reloadData()
+    }
+    
+    func getQueryResult() {
+        // Create registration POST parameters
+        let query: [String : Any] = [
+            "query": userSearchBar.text!
+        ]
+        
+        print("Search query: \(userSearchBar.text!)")
+        // Search query endpoint
+        let url = "http://18.219.112.140:8000/api/v1/search-users/"
+        
+        // HTTP request
+        AF.request(url, method: .post, parameters: query, encoding: JSONEncoding.default).responseJSON { (response) in
             switch response.result {
                 case .success(let value):
                     if let data = value as? [String : Any] {
-                        self.friends = data["friends"] as! NSArray
-                        self.friendsTableView.reloadData()
+                        //self.searchBar = nil
+                        
+                        self.friends = data["users"] as! NSArray
+                        print(self.friends)
+                        self.addFriendTableView.reloadData()
                     }
                 
                 case .failure(let error):
                     print(error.localizedDescription)
-            }
+                }
         }
     }
-    
-    
-
     /*
     // MARK: - Navigation
 
