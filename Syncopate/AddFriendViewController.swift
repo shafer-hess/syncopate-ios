@@ -49,8 +49,6 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         // Retrieve friends info
         let friend = friends[indexPath.row] as! NSDictionary
         
-        //email = friend["email"]
-        
         // Populate cells
         let baseURL = "http://18.219.112.140/images/avatars/"
         let picURL = (friend["profile_pic_url"] as? String)!
@@ -74,7 +72,6 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             // Alert controller
             let options = UIAlertController(title: "Add Friend", message: "Are you sure you want to add Bob as a friend?", preferredStyle: .alert)
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
-                print("Here in yes")
                 self.sendFriendRequest(email: email)
             }
             let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
@@ -124,18 +121,14 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    // get the friend email to send friend request
     func sendFriendRequest(email: String) {
         // TODO
-        // Send message request
         // Get incoming message request
         // Get outgoing message request
         // Update message request
-        //let friend = friends[indexPath.row] as! NSDictionary
         
         // Create send message request POST parameters
         let param: [String : Any] = [
-            //"email": friend["email"] as! String
             "email": email
         ]
         
