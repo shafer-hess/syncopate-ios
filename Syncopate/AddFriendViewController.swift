@@ -55,10 +55,11 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         let imageURL = URL(string: (baseURL + picURL))!
         let first_name = friend["first_name"] as? String
         let last_name = friend["last_name"] as? String
+        let fullname = (first_name)! + " " + (last_name)!
         let email = friend["email"] as! String
         let username = (email.replacingOccurrences(of: "@purdue.edu", with: ""))
         
-        cell.nameLabel.text = ((first_name)!) + " " + ((last_name)!)
+        cell.nameLabel.text = (fullname)
         cell.profileImage.af.setImage(withURL: imageURL)
         cell.usernameLabel.text = username
         
@@ -70,7 +71,7 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         // add friend button is clicked 
         cell.addButtonAction = { [unowned self] in
             // Alert controller
-            let options = UIAlertController(title: "Add Friend", message: "Are you sure you want to add Bob as a friend?", preferredStyle: .alert)
+            let options = UIAlertController(title: "Add Friend", message: "Are you sure you want to add \(fullname) as a friend?", preferredStyle: .alert)
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
                 self.sendFriendRequest(email: email)
             }
