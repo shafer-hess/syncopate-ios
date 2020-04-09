@@ -15,9 +15,15 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var denyButton: UIButton!
     
+    // closure properties
+    var acceptButtonAction: (()->())?
+    var denyButtonAction: (()->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.acceptButton.addTarget(self, action: #selector(onAcceptButton(_:)), for: .touchUpInside)
+        self.denyButton.addTarget(self, action: #selector(onDenyButton(_:)), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,8 +33,10 @@ class NotificationCell: UITableViewCell {
     }
     
     @IBAction func onAcceptButton(_ sender: Any) {
+        acceptButtonAction?()
     }
     
     @IBAction func onDenyButton(_ sender: Any) {
+        denyButtonAction?()
     }
 }

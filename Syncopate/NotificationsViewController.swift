@@ -48,6 +48,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         let first_name = friend["sender__first_name"] as? String
         let last_name = friend["sender__last_name"] as? String
         let fullname = (first_name)! + " " + (last_name)!
+        let id = friend["id"] as! Int
         
         cell.profileImage.af.setImage(withURL: imageURL)
         cell.nameLabel.text = fullname
@@ -57,11 +58,38 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
         cell.profileImage.clipsToBounds = true
         
+        // action buttons response
+        cell.acceptButtonAction = { [unowned self] in
+            // Alert controller
+            let options = UIAlertController(title: "Accept Request", message: "Are you sure you want to accept \(fullname)'s friend request?", preferredStyle: .alert)
+            let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
+                    self.updateRequest(request_id: id, reply: true)
+            }
+            let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
+                
+            options.addAction(yesButton)
+            options.addAction(noButton)
+                
+            self.present(options, animated: true)
+        }
+        
+        cell.denyButtonAction = { [unowned self] in
+            // Alert controller
+            let options = UIAlertController(title: "Accept Request", message: "Are you sure you want to deny \(fullname)'s friend request?", preferredStyle: .alert)
+            let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in }
+            let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
+                
+            options.addAction(yesButton)
+            options.addAction(noButton)
+                
+            self.present(options, animated: true)
+        }
+        
         return cell
     }
     
-    func getIncomingRequest(){
-        // Send message request endpoint
+    func getIncomingRequest() {
+        // Incoming request endpoint
         let url = "http://18.219.112.140:8000/api/v1/requests/"
             
         // HTTP request
@@ -79,6 +107,31 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
 
+    func updateRequest(request_id: Int, reply: Bool) {
+        // Create response POST parameters
+        let action: [String : Any] = [
+            "request_id": request_id,
+            "action": reply
+        ]
+        
+        // Request action endpoint
+        let url = "http://18.219.112.140:8000/api/v1/request-action/"
+            
+        // HTTP request
+        AF.request(url, method: .post, parameters: action, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        if(data["status"] as! String == "success") {
+                            self.notificationTableView.reloadData()
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

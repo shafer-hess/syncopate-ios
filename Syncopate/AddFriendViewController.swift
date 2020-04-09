@@ -33,12 +33,6 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         addFriendTableView.reloadData()
     }
     
-    func getEmail(at indexPath: IndexPath) -> String {
-        let friend = friends[indexPath.row] as! NSDictionary
-        let email = friend["email"]
-        return email as! String
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
@@ -143,6 +137,15 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                     if let data = value as? [String : Any] {
                         if(data["status"] as! String == "success") {
                             self.addFriendTableView.reloadData()
+                        }
+                        else {
+                            // Alert controller
+                            let alreadyFriend = UIAlertController(title: "Already Friends", message: "You two are already friends!", preferredStyle: .alert)
+                            let okButton = UIAlertAction(title: "Ok", style: .default) { (action) in
+                               
+                            }
+                            alreadyFriend.addAction(okButton)
+                            self.present(alreadyFriend, animated: true)
                         }
                     }
                 
