@@ -99,7 +99,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         socket.emit("subscribeToRoom", String(groupId))
     }
 
-    //MARK: -  MessagKit Delegate Required Protocol Stubs
+    //MARK: -  MessagKit Protocol Stubs and Customization
     func currentSender() -> SenderType {
         // Retrieve current user information and establish as currentSender
         let userId: String = String(currUser["id"] as! Int)
@@ -149,9 +149,19 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     }
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        //Check if avatar should be displayed -> Display at bottom of user's message chain
+        if(indexPath.section < messages.count - 1) {
+            if(message.sender.displayName == messages[indexPath.section + 1].sender.displayName) {
+                avatarView.isHidden = true
+                return
+            }
+        }
+        
+        avatarView.isHidden = false
+        
         let msg = message as! Message
         if let url = msg.profileUrl {
-            if(url == "http://18.219.112.140/images/avatars/default.png") {
+            if(url == "default.png" || url == "18.219.112.140/images/avatars/default.png") {
                 avatarView.image = defaultAvatar
             } else {
                 AF.request(url).responseImage { (response) in
@@ -162,7 +172,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             }
         }
     }
-    
+        
     // MARK: - Helper Functions
     
     func randomString(length: Int) -> String {
@@ -280,6 +290,14 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         let messageContent = message[0] as! NSDictionary
         let user = messageContent["user_info"] as! NSDictionary
         
+        var profileUrl: String = user["profile_pic_url"] as! String
+        
+        let split: [String]
+        if(profileUrl.contains("http://18.219.112.140/images/avatars/")) {
+            split = profileUrl.components(separatedBy: "http://18.219.112.140/images/avatars/")
+            profileUrl = split[1]
+        }
+        
         // Create MessageKit Message From Received Socket Data
         let newMessage = [
             "id": Int(randomString(length: 10)),
@@ -287,8 +305,8 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             "rich_content": messageContent["rich_content"],
             "content": messageContent["content"],
             "user__first_name": user["first_name"],
-            "user__last_name": user["last_name"]
-
+            "user__last_name": user["last_name"],
+            "user__profile_pic_url": profileUrl
         ]
         
         // Try to create MessageType entry
