@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import AlamofireImage
 import MessageKit
 import InputBarAccessoryView
 import SocketIO
@@ -24,6 +25,8 @@ struct Message: MessageType {
     var messageId: String
     var sentDate: Date
     var kind: MessageKind
+    
+    var profileUrl: String?
 }
 
 struct PhotoMediaItem: MediaItem {
@@ -48,6 +51,8 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     
     // Array to hold formatted messages retrieved from database
     var messages: [MessageType] = []
+    
+    var defaultAvatar: UIImage = UIImage()
 
     // SocketIO Manager and Socket
     let manager = SocketManager(socketURL: URL(string: "http://18.219.112.140:3001")!, config: [])
@@ -66,6 +71,14 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         messageInputBar.delegate = self
         
         getMessages(groupId: groupId)
+        
+        // Cache Default Profile Picture
+        let urlRequest: String = "http://18.219.112.140/images/avatars/default.png"
+        AF.request(urlRequest).responseImage { (response) in
+            if case .success(let image) = response.result {
+                self.defaultAvatar = image
+            }
+        }
         
         // SocketIO Setup
         socket = manager.defaultSocket
@@ -133,6 +146,21 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         }
         
         return 0
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        let msg = message as! Message
+        if let url = msg.profileUrl {
+            if(url == "http://18.219.112.140/images/avatars/default.png") {
+                avatarView.image = defaultAvatar
+            } else {
+                AF.request(url).responseImage { (response) in
+                    if case .success(let image) = response.result {
+                        avatarView.image = image
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - Helper Functions
@@ -219,8 +247,11 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     }
     
     func makeMessage(sender: Sender, message: NSDictionary) -> Message? {
+        let baseUrl: String = "http://18.219.112.140/images/avatars/"
+        let imageUrl: String = baseUrl + (message["user__profile_pic_url"] as! String)
+        
         let messageId = String(message["id"] as! Int)
-       
+        
         let kind: MessageKind
         if(message["rich_content"] as! Bool) {
             if let img: UIImage = makeImage(message: message) {
@@ -238,7 +269,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             kind = .attributedText(attrStr)
         }
         
-        return Message(sender: sender, messageId: messageId, sentDate: Date(), kind: kind)
+        return Message(sender: sender, messageId: messageId, sentDate: Date(), kind: kind, profileUrl: imageUrl)
     }
     
     // MARK: - Functions to Receive and Send Data
