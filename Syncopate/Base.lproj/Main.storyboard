@@ -438,7 +438,7 @@
         <!--Chat Details-->
         <scene sceneID="jqk-Co-DY5">
             <objects>
-                <viewController title="Chat Details" id="Xbm-eZ-rzA" customClass="ChatDetailsViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chat Details" id="Xbm-eZ-rzA" customClass="MessageKitViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hpa-4b-Ph7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
