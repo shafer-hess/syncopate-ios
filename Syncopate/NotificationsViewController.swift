@@ -23,6 +23,8 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         
         notificationTableView.rowHeight = UITableView.automaticDimension
         notificationTableView.estimatedRowHeight = 150
+        
+        notificationTableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,18 +73,22 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             options.addAction(cancelButton)
                 
             self.present(options, animated: true)
+            self.notificationTableView.reloadData()
         }
         
         cell.denyButtonAction = { [unowned self] in
             // Alert controller
             let options = UIAlertController(title: "Accept Request", message: "Are you sure you want to deny \(fullname)'s friend request?", preferredStyle: .alert)
-            let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in }
+            let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
+                self.updateRequest(request_id: id, reply: false)
+            }
             let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
                 
             options.addAction(yesButton)
             options.addAction(cancelButton)
                 
             self.present(options, animated: true)
+            self.notificationTableView.reloadData()
         }
         
         return cell
