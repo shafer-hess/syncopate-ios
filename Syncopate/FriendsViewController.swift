@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+let notification = NotificationsViewController()
 // MARK: - Badge Notification
 
 extension CAShapeLayer {
@@ -67,17 +68,6 @@ extension UIBarButtonItem {
         // Save Badge as UIBarButtonItem property
         objc_setAssociatedObject(self, &handle, badge, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
-    
-    func updateBadge(number: Int) {
-        if let text = badgeLayer?.sublayers?.filter({ $0 is CATextLayer }).first as? CATextLayer {
-            text.string = "\(number)"
-        }
-    }
-    
-    func removeBadge() {
-        badgeLayer?.removeFromSuperlayer()
-    }
-    
 }
 
 // MARK: - End Badge Notification
@@ -105,6 +95,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getFriendsList()
+        getBadgeCount()
         friendsTableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,9 +126,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
         cell.profileImage.clipsToBounds = true
         
-        // Notifications
-        self.notificationButton.addBadge(number: 11)
-        
         return cell
     }
     
@@ -160,7 +148,14 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // Write Endpoint to retrieve the amount of notifications a user has atm
+    // Notification count
+    func getBadgeCount() {
+        // Notifications
+        let notificationCount = notification.getCount()
+        if notificationCount > 0 {
+            self.notificationButton.addBadge(number: notificationCount)
+        }
+    }
 
     /*
     // MARK: - Navigation

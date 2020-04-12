@@ -10,10 +10,12 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+var cellCount: Int = 0
 class NotificationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Outlets and variables
     @IBOutlet weak var notificationTableView: UITableView!
-    var friends: NSArray = []
+    var friendRequests: NSArray = []
+    let window = UIWindow()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +36,14 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        friends.count
+        return friendRequests.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = notificationTableView.dequeueReusableCell(withIdentifier: "NotificationCell") as! NotificationCell
         
         // Retrieve friends info
-        let friend = friends[indexPath.row] as! NSDictionary
+        let friend = friendRequests[indexPath.row] as! NSDictionary
         
         // Populate cells
         let baseURL = "http://18.219.112.140/images/avatars/"
@@ -59,13 +61,13 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         cell.profileImage.layer.masksToBounds = false
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
         cell.profileImage.clipsToBounds = true
-        
+
         // action buttons response
         cell.acceptButtonAction = { [unowned self] in
             // Alert controller
             let options = UIAlertController(title: "Accept Request", message: "Are you sure you want to accept \(fullname)'s friend request?", preferredStyle: .alert)
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
-                    self.updateRequest(request_id: id, reply: true)
+                self.updateRequest(request_id: id, reply: true)
             }
             let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
                 
@@ -103,7 +105,9 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             switch response.result {
                 case .success(let value):
                     if let data = value as? [String : Any] {
-                        self.friends = data["requests"] as! NSArray
+                        self.friendRequests = data["requests"] as! NSArray
+                        print(self.friendRequests.count)
+                        cellCount = self.friendRequests.count
                         self.notificationTableView.reloadData()
                     }
                     
@@ -114,6 +118,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     func updateRequest(request_id: Int, reply: Bool) {
+        cellCount -= 1
         // Create response POST parameters
         let action: [String : Any] = [
             "request_id": request_id,
@@ -138,6 +143,13 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
+    
+    // Count for notifications
+    func getCount() -> Int {
+        print("Cell count: \(cellCount)")
+        return cellCount
+    }
+    
     /*
     // MARK: - Navigation
 
