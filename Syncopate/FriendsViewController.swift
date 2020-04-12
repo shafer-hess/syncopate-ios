@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-let notification = NotificationsViewController()
 // MARK: - Badge Notification
 
 extension CAShapeLayer {
@@ -150,6 +149,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // Notification count
     func getBadgeCount() {
+        let notification = NotificationsViewController()
         // Notifications
         let notificationCount = notification.getCount()
         if notificationCount > 0 {
