@@ -41,9 +41,9 @@ Syncopate provides a unified solution for all communication between Purdue stude
 - [x] User can send messages
 - [ ] User can create groups
 - [ ] User can add users to a group
-- [ ] User can add friends
+- [x] User can add friends
 - [x] Users can search for other users
-- [ ] User receives notifications 
+- [x] User receives notifications 
 - [x] User can log out
 
 **Optional Nice-to-have Stories**
@@ -115,6 +115,16 @@ Syncopate provides a unified solution for all communication between Purdue stude
 
 <img src="https://media0.giphy.com/media/eMUpbyZSivxT3vEf7U/giphy.gif?cid=4d1e4f2971d6e42fecf9a5ef03379186106312811a03c131&rid=giphy.gif" width=250>
 Link to full gif: https://i.imgur.com/A0HKRo1.gif
+
+## Sprint 2
+- [x] User can see list of their chats
+- [x] User can send messages
+- [x] User can add friends
+- [x] Users can search for other users
+- [x] User receives notifications
+
+<img src="https://media2.giphy.com/media/gjy8s9svHukSW5cZwi/giphy.gif?cid=4d1e4f292fc7065937401e8f86bd131b3d5870c53fd8abd1&rid=giphy.gif" width=250>
+Link to full gif: https://i.imgur.com/86Okmgi.gif
 
 ## Wireframes
 *We only made digital wireframes <br>
