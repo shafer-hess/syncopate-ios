@@ -17,7 +17,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var chatsTableView: UITableView!
     
     let myRefreshController = UIRefreshControl()
-    let notificationVC = NotificationsViewController()
     
     var groups: NSArray = []
     var currUser: NSDictionary = [:]
@@ -37,7 +36,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidAppear(animated)
         getCurrentUser()
         getUserGroups()
-        notificationVC.getIncomingRequest()
         self.chatsTableView.reloadData()
     }
     

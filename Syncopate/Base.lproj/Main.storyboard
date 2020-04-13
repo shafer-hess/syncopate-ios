@@ -292,7 +292,7 @@
                     <navigationItem key="navigationItem" title="Friends" id="W9t-MD-8cb">
                         <barButtonItem key="leftBarButtonItem" title="Notifications Button" image="envelope" catalog="system" id="lEc-RB-MIv">
                             <connections>
-                                <segue destination="L0U-OG-I7e" kind="show" id="HJI-dr-t7T"/>
+                                <segue destination="L0U-OG-I7e" kind="show" identifier="NotificationsSegue" id="HJI-dr-t7T"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Friend Button" image="plus.circle" catalog="system" width="10" id="Y1N-9W-QYZ">

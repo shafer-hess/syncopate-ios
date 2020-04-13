@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-let notification = NotificationsViewController()
+var cellCount: Int = -1
 // MARK: - Badge Notification
 
 extension CAShapeLayer {
@@ -81,6 +81,8 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var addFriendButton: UIBarButtonItem!
     @IBOutlet weak var friendsTableView: UITableView!
     var friends: NSArray = []
+    var friendRequests: NSArray = []
+    
     @IBOutlet weak var notificationButton: UIBarButtonItem!
     
     @IBAction func addFriendActionButton(_ sender: Any) {
@@ -89,6 +91,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         controller = false
+        getIncomingRequest()
         
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
@@ -100,6 +103,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getFriendsList()
+        //getIncomingRequest()
         getBadge()
         friendsTableView.reloadData()
     }
@@ -154,9 +158,39 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // Notification count
+    func getIncomingRequest() {
+        // Incoming request endpoint
+        let url = "http://18.219.112.140:8000/api/v1/requests/"
+            
+        // HTTP request
+        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        self.friendRequests = data["requests"] as! NSArray
+                        print(self.friendRequests.count)
+                        cellCount = self.friendRequests.count
+                        if controller {
+                            self.friendsTableView.reloadData()
+                            controller = false
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // Count for notifications
+    func getCount() -> Int {
+        print("Cell count: \(cellCount)")
+        return cellCount
+    }
+    
+    // Get notification count and badge
     func getBadge() {
-        let notificationCount = notification.getCount()
+        let notificationCount = getCount()
         // Only display badge if there is a notification
         if notificationCount > 0 {
             self.notificationButton.addBadge(number: notificationCount)
@@ -166,14 +200,19 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "NotificationsSegue" {
+            let requests = friendRequests
+            
+            let notificationViewController = segue.destination as! NotificationsViewController
+            notificationViewController.requests = requests
+        }
+        // Pass the friend requests to the next view controller
     }
-    */
-
 }

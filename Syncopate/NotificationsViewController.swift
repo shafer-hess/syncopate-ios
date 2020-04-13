@@ -10,14 +10,12 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-var cellCount: Int = 0
 var controller: Bool = false
-let friendView = FriendsViewController()
 
 class NotificationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Outlets and variables
     @IBOutlet weak var notificationTableView: UITableView!
-    var friendRequests: NSArray = []
+    var requests: NSArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,19 +33,18 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getIncomingRequest()
         notificationTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendRequests.count
+        return requests.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = notificationTableView.dequeueReusableCell(withIdentifier: "NotificationCell") as! NotificationCell
         
         // Retrieve friends info
-        let friend = friendRequests[indexPath.row] as! NSDictionary
+        let friend = requests[indexPath.row] as! NSDictionary
         
         // Populate cells
         let baseURL = "http://18.219.112.140/images/avatars/"
@@ -99,30 +96,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell
     }
-    
-    func getIncomingRequest() {
-        // Incoming request endpoint
-        let url = "http://18.219.112.140:8000/api/v1/requests/"
-            
-        // HTTP request
-        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
-            switch response.result {
-                case .success(let value):
-                    if let data = value as? [String : Any] {
-                        self.friendRequests = data["requests"] as! NSArray
-                        print(self.friendRequests.count)
-                        cellCount = self.friendRequests.count
-                        if controller {
-                            self.notificationTableView.reloadData()
-                            controller = false
-                        }
-                    }
-                    
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
-    }
 
     func updateRequest(request_id: Int, reply: Bool) {
         cellCount -= 1
@@ -149,11 +122,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
                     print(error.localizedDescription)
             }
         }
-    }
-    // Count for notifications
-    func getCount() -> Int {
-        print("Cell count: \(cellCount)")
-        return cellCount
     }
     
     /*
