@@ -33,12 +33,6 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         addFriendTableView.reloadData()
     }
     
-    func getEmail(at indexPath: IndexPath) -> String {
-        let friend = friends[indexPath.row] as! NSDictionary
-        let email = friend["email"]
-        return email as! String
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
@@ -49,18 +43,17 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         // Retrieve friends info
         let friend = friends[indexPath.row] as! NSDictionary
         
-        //email = friend["email"]
-        
         // Populate cells
         let baseURL = "http://18.219.112.140/images/avatars/"
         let picURL = (friend["profile_pic_url"] as? String)!
         let imageURL = URL(string: (baseURL + picURL))!
         let first_name = friend["first_name"] as? String
         let last_name = friend["last_name"] as? String
+        let fullname = (first_name)! + " " + (last_name)!
         let email = friend["email"] as! String
         let username = (email.replacingOccurrences(of: "@purdue.edu", with: ""))
         
-        cell.nameLabel.text = ((first_name)!) + " " + ((last_name)!)
+        cell.nameLabel.text = (fullname)
         cell.profileImage.af.setImage(withURL: imageURL)
         cell.usernameLabel.text = username
         
@@ -72,15 +65,14 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         // add friend button is clicked 
         cell.addButtonAction = { [unowned self] in
             // Alert controller
-            let options = UIAlertController(title: "Add Friend", message: "Are you sure you want to add Bob as a friend?", preferredStyle: .alert)
+            let options = UIAlertController(title: "Add Friend", message: "Are you sure you want to add \(fullname) as a friend?", preferredStyle: .alert)
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
-                print("Here in yes")
                 self.sendFriendRequest(email: email)
             }
-            let noButton = UIAlertAction(title: "No", style: .default) { (action) in }
+            let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
             
             options.addAction(yesButton)
-            options.addAction(noButton)
+            options.addAction(cancelButton)
             
             self.present(options, animated: true)
         }
@@ -124,18 +116,14 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    // get the friend email to send friend request
     func sendFriendRequest(email: String) {
         // TODO
-        // Send message request
         // Get incoming message request
         // Get outgoing message request
         // Update message request
-        //let friend = friends[indexPath.row] as! NSDictionary
         
         // Create send message request POST parameters
         let param: [String : Any] = [
-            //"email": friend["email"] as! String
             "email": email
         ]
         
@@ -149,6 +137,15 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
                     if let data = value as? [String : Any] {
                         if(data["status"] as! String == "success") {
                             self.addFriendTableView.reloadData()
+                        }
+                        else {
+                            // Alert controller
+                            let alreadyFriend = UIAlertController(title: "Already Friends", message: "You two are already friends!", preferredStyle: .alert)
+                            let okButton = UIAlertAction(title: "Ok", style: .default) { (action) in
+                               
+                            }
+                            alreadyFriend.addAction(okButton)
+                            self.present(alreadyFriend, animated: true)
                         }
                     }
                 
