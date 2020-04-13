@@ -11,6 +11,9 @@ import Alamofire
 import AlamofireImage
 
 var cellCount: Int = 0
+var controller: Bool = false
+let friendView = FriendsViewController()
+
 class NotificationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Outlets and variables
     @IBOutlet weak var notificationTableView: UITableView!
@@ -19,6 +22,8 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        controller = true
 
         notificationTableView.delegate = self
         notificationTableView.dataSource = self
@@ -80,7 +85,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell.denyButtonAction = { [unowned self] in
             // Alert controller
-            let options = UIAlertController(title: "Accept Request", message: "Are you sure you want to deny \(fullname)'s friend request?", preferredStyle: .alert)
+            let options = UIAlertController(title: "Deny Request", message: "Are you sure you want to deny \(fullname)'s friend request?", preferredStyle: .alert)
             let yesButton = UIAlertAction(title: "Yes", style: .default) { (action) in
                 self.updateRequest(request_id: id, reply: false)
             }
@@ -108,7 +113,10 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
                         self.friendRequests = data["requests"] as! NSArray
                         print(self.friendRequests.count)
                         cellCount = self.friendRequests.count
-                        self.notificationTableView.reloadData()
+                        if controller {
+                            self.notificationTableView.reloadData()
+                            controller = false
+                        }
                     }
                     
                 case .failure(let error):
@@ -143,7 +151,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    
     // Count for notifications
     func getCount() -> Int {
         print("Cell count: \(cellCount)")

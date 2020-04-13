@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+let notification = NotificationsViewController()
 // MARK: - Badge Notification
 
 extension CAShapeLayer {
@@ -67,6 +68,10 @@ extension UIBarButtonItem {
         // Save Badge as UIBarButtonItem property
         objc_setAssociatedObject(self, &handle, badge, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
+    
+    func removeBadge() {
+         badgeLayer?.removeFromSuperlayer()
+     }
 }
 
 // MARK: - End Badge Notification
@@ -82,8 +87,9 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewDidLoad() {
-         super.viewDidLoad()
-
+        super.viewDidLoad()
+        controller = false
+        
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
         
@@ -97,6 +103,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         getBadgeCount()
         friendsTableView.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
@@ -149,11 +156,13 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // Notification count
     func getBadgeCount() {
-        let notification = NotificationsViewController()
-        // Notifications
         let notificationCount = notification.getCount()
+        // Only display badge if there is a notification
         if notificationCount > 0 {
             self.notificationButton.addBadge(number: notificationCount)
+        }
+        else {
+            self.notificationButton.removeBadge()
         }
     }
 
