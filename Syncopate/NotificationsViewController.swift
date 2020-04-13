@@ -72,8 +72,8 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             }
             let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
                 
-            options.addAction(yesButton)
             options.addAction(cancelButton)
+            options.addAction(yesButton)
                 
             self.present(options, animated: true)
             self.notificationTableView.reloadData()
@@ -86,9 +86,9 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
                 self.updateRequest(request_id: id, reply: false)
             }
             let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
-                
-            options.addAction(yesButton)
+            
             options.addAction(cancelButton)
+            options.addAction(yesButton)
                 
             self.present(options, animated: true)
             self.notificationTableView.reloadData()

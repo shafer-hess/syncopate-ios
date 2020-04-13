@@ -71,8 +71,8 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
             
-            options.addAction(yesButton)
             options.addAction(cancelButton)
+            options.addAction(yesButton)
             
             self.present(options, animated: true)
         }
