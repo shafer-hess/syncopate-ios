@@ -100,7 +100,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getFriendsList()
-        getBadgeCount()
+        getBadge()
         friendsTableView.reloadData()
     }
     
@@ -155,7 +155,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // Notification count
-    func getBadgeCount() {
+    func getBadge() {
         let notificationCount = notification.getCount()
         // Only display badge if there is a notification
         if notificationCount > 0 {

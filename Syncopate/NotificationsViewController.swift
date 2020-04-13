@@ -18,7 +18,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     // Outlets and variables
     @IBOutlet weak var notificationTableView: UITableView!
     var friendRequests: NSArray = []
-    let window = UIWindow()
     
     override func viewDidLoad() {
         super.viewDidLoad()

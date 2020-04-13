@@ -29,7 +29,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.chatsTableView.delegate = self
         self.chatsTableView.dataSource = self
         
-        notificationVC.getIncomingRequest()
         myRefreshController.addTarget(self, action: #selector(getUserGroups), for: .valueChanged)
         self.chatsTableView.refreshControl = myRefreshController
     }
@@ -38,6 +37,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidAppear(animated)
         getCurrentUser()
         getUserGroups()
+        notificationVC.getIncomingRequest()
         self.chatsTableView.reloadData()
     }
     
