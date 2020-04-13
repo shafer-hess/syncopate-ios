@@ -91,7 +91,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         controller = false
-        getIncomingRequest()
+        //getIncomingRequest()
         
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
@@ -103,7 +103,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getFriendsList()
-        //getIncomingRequest()
+        getIncomingRequest()
         getBadge()
         friendsTableView.reloadData()
     }
@@ -209,6 +209,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Pass the selected object to the new view controller.
         if segue.identifier == "NotificationsSegue" {
             let requests = friendRequests
+            print(requests)
             
             let notificationViewController = segue.destination as! NotificationsViewController
             notificationViewController.requests = requests
