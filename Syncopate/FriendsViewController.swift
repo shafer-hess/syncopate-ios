@@ -91,7 +91,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         controller = false
-        //getIncomingRequest()
+        getIncomingRequest()
         
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
@@ -170,6 +170,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                         self.friendRequests = data["requests"] as! NSArray
                         print(self.friendRequests.count)
                         cellCount = self.friendRequests.count
+                        self.getBadge()
                         if controller {
                             self.friendsTableView.reloadData()
                             controller = false
@@ -200,7 +201,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -209,7 +209,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Pass the selected object to the new view controller.
         if segue.identifier == "NotificationsSegue" {
             let requests = friendRequests
-            print(requests)
             
             let notificationViewController = segue.destination as! NotificationsViewController
             notificationViewController.requests = requests
