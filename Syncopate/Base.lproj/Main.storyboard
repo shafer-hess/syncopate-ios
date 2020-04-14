@@ -533,10 +533,61 @@
                     <view key="view" contentMode="scaleToFill" id="452-mJ-HKJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VzT-yb-8u1">
+                                <rect key="frame" x="137.66666666666666" y="107" width="100" height="98.666666666666671"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="U71-Kc-hBc"/>
+                                    <constraint firstAttribute="height" constant="100" id="sVg-vo-QFC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N20-H2-hAy">
+                                <rect key="frame" x="8" y="210" width="359" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgY-pv-UQu">
+                                <rect key="frame" x="8" y="241" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDn-La-PPA">
+                                <rect key="frame" x="124" y="400" width="127" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit Profile Picture"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qr7-6L-y1Q">
+                                <rect key="frame" x="126" y="438" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Password"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Circles" translatesAutoresizingMaskIntoConstraints="NO" id="t80-un-v2I">
+                                <rect key="frame" x="-240" y="426" width="1060" height="596"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dxl-eU-V7L" firstAttribute="trailing" secondItem="N20-H2-hAy" secondAttribute="trailing" constant="8" id="9FA-u0-baI"/>
+                            <constraint firstItem="VzT-yb-8u1" firstAttribute="centerX" secondItem="452-mJ-HKJ" secondAttribute="centerX" id="GzC-oE-V2q"/>
+                            <constraint firstItem="N20-H2-hAy" firstAttribute="top" secondItem="VzT-yb-8u1" secondAttribute="bottom" constant="4" id="Hqz-YZ-WhN"/>
+                            <constraint firstItem="N20-H2-hAy" firstAttribute="leading" secondItem="dxl-eU-V7L" secondAttribute="leading" constant="8" id="O7V-V9-0Qt"/>
+                            <constraint firstItem="VzT-yb-8u1" firstAttribute="centerY" secondItem="452-mJ-HKJ" secondAttribute="centerY" constant="-250" id="dfC-IZ-dzH"/>
+                            <constraint firstItem="dxl-eU-V7L" firstAttribute="trailing" secondItem="cgY-pv-UQu" secondAttribute="trailing" constant="8" id="uew-iE-2by"/>
+                            <constraint firstItem="cgY-pv-UQu" firstAttribute="top" secondItem="N20-H2-hAy" secondAttribute="bottom" constant="4" id="xZp-yM-hT0"/>
+                            <constraint firstItem="cgY-pv-UQu" firstAttribute="leading" secondItem="dxl-eU-V7L" secondAttribute="leading" constant="8" id="ybh-7p-904"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dxl-eU-V7L"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lLd-dK-n5Q"/>
+                    <navigationItem key="navigationItem" title="Profile" id="lLd-dK-n5Q"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="cgY-pv-UQu" id="2Xi-cV-xSj"/>
+                        <outlet property="nameLabel" destination="N20-H2-hAy" id="9PW-nK-d1I"/>
+                        <outlet property="profileImage" destination="VzT-yb-8u1" id="9lW-UP-BNj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nZ-TY-TRC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
