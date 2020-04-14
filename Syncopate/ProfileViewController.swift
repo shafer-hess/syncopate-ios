@@ -22,6 +22,14 @@ class ProfileViewController: UIViewController {
         getUserInfo()
     }
     
+    @IBAction func onEditPicture(_ sender: Any) {
+    
+    }
+    
+    @IBAction func onChangePassword(_ sender: Any) {
+        
+    }
+    
     func getUserInfo() {
         // user info endpoint
         let url = "http://18.219.112.140:8000/api/v1/identify/"
