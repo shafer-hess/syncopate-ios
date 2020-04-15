@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // Outlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,11 +23,36 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func onEditPicture(_ sender: Any) {
-    
+        // Open photo library or camera
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        // Alert controller to choose photo library or camera
+        let options = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let camera = UIAlertAction(title: "Camera", style: .default) { (action) in
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+        }
+        let library = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in }
+        
+        options.addAction(camera)
+        options.addAction(library)
+        options.addAction(cancel)
+        present(options, animated: true)
+        
+        // If chosen photo
+            // Load photo to new view controller - give option to submit or cancel
+            // If cancel - go back to camera or photo library
+            // If accept - dismiss view controller, send photo to backend
     }
     
     @IBAction func onChangePassword(_ sender: Any) {
-        
+        //self.performSegue(withIdentifier: "passwordSegue", sender: self)
     }
     
     func getUserInfo() {

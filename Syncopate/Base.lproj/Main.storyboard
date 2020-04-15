@@ -574,7 +574,7 @@
                                 <state key="normal" title="Change Password"/>
                                 <connections>
                                     <action selector="onChangePassword:" destination="E7O-L8-E9v" eventType="touchUpInside" id="8e1-m0-WwM"/>
-                                    <segue destination="tgc-Cy-lMM" kind="presentation" id="mjx-Xz-ZGk"/>
+                                    <segue destination="tgc-Cy-lMM" kind="presentation" identifier="passwordSegue" id="mjx-Xz-ZGk"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Circles" translatesAutoresizingMaskIntoConstraints="NO" id="t80-un-v2I">
