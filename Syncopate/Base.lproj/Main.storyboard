@@ -550,11 +550,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="wbo-9V-Wx9"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8Rs-Ui-2Vf" appends="YES" id="NAk-FS-abi"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="i1q-5h-K6A"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbt-af-XGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8Rs-Ui-2Vf">
+                    <connections>
+                        <action selector="onTapView:" destination="Xbm-eZ-rzA" id="9NT-x5-zXt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4188" y="-580"/>
         </scene>
@@ -624,6 +633,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="aa8-Pb-E0Q" firstAttribute="leading" secondItem="g0B-CA-hkT" secondAttribute="leading" constant="87" id="0Lx-2S-rXo"/>
                             <constraint firstItem="6jh-Ql-xbK" firstAttribute="leading" secondItem="g0B-CA-hkT" secondAttribute="leading" constant="87" id="16R-e7-rX8"/>
@@ -653,6 +663,9 @@
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="asS-L2-NXf" secondAttribute="trailing" constant="-442" id="q01-Xp-YBM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g0B-CA-hkT"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="JmL-dU-SEr" appends="YES" id="yAc-TT-5GS"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="confirmPasswordField" destination="IRQ-5g-Zxa" id="uBU-Nd-uqX"/>
@@ -664,6 +677,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZM-ib-WdF" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="JmL-dU-SEr">
+                    <connections>
+                        <action selector="onTapView:" destination="0fy-Tu-l97" id="CDn-Fl-kyd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="138" y="828"/>
         </scene>
