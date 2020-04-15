@@ -109,6 +109,10 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
+    
+    @IBAction func onTapView(_ sender: Any) {
+        self.messageInputBar.inputTextView.resignFirstResponder()
+    }
 
     //MARK: -  MessagKit Protocol Stubs and Customization
     func currentSender() -> SenderType {
@@ -325,7 +329,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         // Retrieve Message Content
         let message = data as! NSArray
         let messageContent = message[0] as! NSDictionary
-        let user = messageContent["user_info"] as! NSDictionary
+        let user = messageContent["user"] as! NSDictionary
         
         var profileUrl: String = user["profile_pic_url"] as! String
         
@@ -366,8 +370,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         }
         
         let newMessage = [
-            "id": Int(randomString(length: 10)),
-            "user": currUser["id"],
+            "id": Int(randomString(length: 10)) as Any,
             "group_id": groupId,
             "rich_content": false,
             "content": text,
@@ -376,12 +379,12 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
             "user__last_name": currUser["last_name"] as! String,
             "user__profile_pic_url": profileUrl,
             "profile_pic_url": profileUrl,
-            "user_info": [ "id": currUser["id"],
+            "user": [ "id": currUser["id"],
                            "profile_pic_url": profileUrl,
                            "first_name": currUser["first_name"] as! String,
                            "last_name": currUser["last_name"] as! String
                         ]
-        ]
+            ] as [String : Any]
   
         inputBar.inputTextView.text = nil
         socket.emit("new message", newMessage)
@@ -416,5 +419,4 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         // Pass the selected object to the new view controller.
     }
     */
-
 }
