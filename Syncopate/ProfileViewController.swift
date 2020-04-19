@@ -98,12 +98,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func uploadProfilePicture(picture: UIImage) {
         // Upload profile picture endpoint
-        let url = "http://18.219.112.140:3200/api/v1/ios-upload/"
+        let url = "http://18.219.112.140:8000/api/v1/ios-upload/"
         //print("Called")
         let imageData = picture.jpegData(compressionQuality: 1.0)
         //print("Here")
         //let baseString = imageData!.base64EncodedData(options: .lineLength64Characters)
-        let baseString = imageData!.base64EncodedString(options: .lineLength64Characters)
+        let header = "data:image/jpeg;base64,"
+        let baseString = header + imageData!.base64EncodedString(options: .lineLength64Characters)
+        print(baseString)
         //let fileType = imageData.t
         //let converted = String(data: imageData, encoding: .utf8)
         // Upload avatar POST parameter
