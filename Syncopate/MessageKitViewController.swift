@@ -61,6 +61,8 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(group)
+        
         // Get Group ID
         groupId = group["group__id"] as! Int
         
@@ -410,13 +412,15 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         self.view.endEditing(true)
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Get chat settings view conytroller
+        let chatSettings = segue.destination as! ChatDetailsViewController
+        
+        // Set chatSettings variables
+        chatSettings.groupId = self.groupId
+        chatSettings.group = self.group
     }
-    */
 }

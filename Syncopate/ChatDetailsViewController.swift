@@ -9,15 +9,21 @@
 import UIKit
 
 class ChatDetailsViewController: UIViewController {
-
+    // Outlets
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var groupNameButton: UIButton!
+    @IBOutlet weak var groupDescButton: UIButton!
+    @IBOutlet weak var pinSwitch: UISwitch!
+    
+    // Variables
+    var groupId: Int!
     var group: NSDictionary = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.title = group["group__name"] as! String
     }
-    
 
     /*
     // MARK: - Navigation

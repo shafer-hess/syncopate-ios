@@ -556,7 +556,13 @@
                             <outletCollection property="gestureRecognizers" destination="8Rs-Ui-2Vf" appends="YES" id="NAk-FS-abi"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="i1q-5h-K6A"/>
+                    <navigationItem key="navigationItem" id="i1q-5h-K6A">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis.circle" catalog="system" id="ONg-WW-ZGg">
+                            <connections>
+                                <segue destination="C5N-r8-eyU" kind="show" identifier="chatSettingsSegue" id="33o-Vy-x5j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbt-af-XGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="8Rs-Ui-2Vf">
@@ -565,7 +571,101 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4188" y="-580"/>
+            <point key="canvasLocation" x="4188" y="-580.04926108374389"/>
+        </scene>
+        <!--Chat Details View Controller-->
+        <scene sceneID="WlP-Kh-eg2">
+            <objects>
+                <viewController id="C5N-r8-eyU" customClass="ChatDetailsViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uYa-fA-QS9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxH-GJ-r56">
+                                <rect key="frame" x="16" y="140" width="343" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TP-0D-LaO">
+                                <rect key="frame" x="16" y="208.33333333333334" width="172" height="22"/>
+                                <state key="normal" title="   Edit Group Name" image="pencil.circle" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fy-bj-mSP">
+                                <rect key="frame" x="16" y="255.33333333333337" width="217" height="22"/>
+                                <state key="normal" title="   Edit Group Description" image="doc.text" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ga6-hh-iTb">
+                                <rect key="frame" x="16" y="302.33333333333331" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="UBN-hg-QB8"/>
+                                    <constraint firstAttribute="width" constant="49" id="ehf-Cc-TC2"/>
+                                </constraints>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMA-dv-lGw">
+                                <rect key="frame" x="83" y="307.33333333333331" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLr-ML-TFy">
+                                <rect key="frame" x="126" y="662" width="123" height="38"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="EOQ-sC-Waj"/>
+                                    <constraint firstAttribute="width" constant="123" id="ejG-3u-G2s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Leave Group">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ga6-hh-iTb" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="0Qd-8q-Wuu"/>
+                            <constraint firstItem="pxH-GJ-r56" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="3jY-Xe-31O"/>
+                            <constraint firstItem="0TP-0D-LaO" firstAttribute="top" secondItem="pxH-GJ-r56" secondAttribute="bottom" constant="48" id="8wI-01-P3N"/>
+                            <constraint firstItem="Ga6-hh-iTb" firstAttribute="top" secondItem="2Fy-bj-mSP" secondAttribute="bottom" constant="25" id="EiM-8U-gOE"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0TP-0D-LaO" secondAttribute="trailing" constant="187" id="LJI-k0-dKN"/>
+                            <constraint firstItem="0TP-0D-LaO" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="QZv-Df-TQF"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gMA-dv-lGw" secondAttribute="trailing" constant="226" id="RXe-tD-2ji"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="2Fy-bj-mSP" secondAttribute="trailing" constant="142" id="SHd-yV-bUQ"/>
+                            <constraint firstItem="2Fy-bj-mSP" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="UQ2-Ci-HQV"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" secondItem="pxH-GJ-r56" secondAttribute="trailing" constant="16" id="bKI-V9-5h2"/>
+                            <constraint firstItem="lLr-ML-TFy" firstAttribute="top" secondItem="gMA-dv-lGw" secondAttribute="bottom" constant="333.67000000000002" id="bcs-Kf-J7m"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" secondItem="lLr-ML-TFy" secondAttribute="trailing" constant="126" id="enD-4I-oCv"/>
+                            <constraint firstItem="lLr-ML-TFy" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="126" id="fED-Ns-fGV"/>
+                            <constraint firstItem="2Fy-bj-mSP" firstAttribute="top" secondItem="0TP-0D-LaO" secondAttribute="bottom" constant="25" id="fW5-SJ-9AO"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Ga6-hh-iTb" secondAttribute="bottom" constant="395.67000000000002" id="gLI-X3-yMq"/>
+                            <constraint firstItem="pxH-GJ-r56" firstAttribute="top" secondItem="Oo3-2W-Wu2" secondAttribute="top" id="lbf-lK-Rxw"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="lLr-ML-TFy" secondAttribute="bottom" constant="29" id="lod-Kh-OOu"/>
+                            <constraint firstItem="gMA-dv-lGw" firstAttribute="leading" secondItem="Ga6-hh-iTb" secondAttribute="trailing" constant="18" id="rRS-Vh-8cs"/>
+                            <constraint firstItem="gMA-dv-lGw" firstAttribute="centerY" secondItem="Ga6-hh-iTb" secondAttribute="centerY" id="vaV-cm-Hga"/>
+                            <constraint firstItem="Ga6-hh-iTb" firstAttribute="top" secondItem="2Fy-bj-mSP" secondAttribute="bottom" constant="25" id="z0W-cW-WhN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oo3-2W-Wu2"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="N4W-0F-LCo"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="pxH-GJ-r56" id="T71-Pi-QXx"/>
+                        <outlet property="groupDescButton" destination="2Fy-bj-mSP" id="4f4-54-4Hv"/>
+                        <outlet property="groupNameButton" destination="0TP-0D-LaO" id="Ipw-TB-aQe"/>
+                        <outlet property="pinSwitch" destination="Ga6-hh-iTb" id="g5Q-bj-hSu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGc-pG-Yjx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5165.6000000000004" y="-580.04926108374389"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="EEf-ja-528">
@@ -770,7 +870,10 @@
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
         <image name="cancel-button" width="200" height="200"/>
         <image name="confirm-button" width="200" height="200"/>
+        <image name="doc.text" catalog="system" width="115" height="128"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="envelope" catalog="system" width="128" height="93"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
