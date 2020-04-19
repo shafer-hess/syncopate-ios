@@ -23,7 +23,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func onEditPicture(_ sender: Any) {
-        // Open photo library or camera
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
@@ -45,10 +44,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         options.addAction(cancel)
         present(options, animated: true)
         
-        // If chosen photo
-            // Load photo to new view controller - give option to submit or cancel
-            // If cancel - go back to camera or photo library
-            // If accept - dismiss view controller, send photo to backend
     }
     
     @IBAction func onChangePassword(_ sender: Any) {
@@ -86,6 +81,67 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     print(error.localizedDescription)
             }
         }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+
+        // Resize
+        let size = CGSize(width: 100, height: 100)
+        let scaledImage = image.af.imageAspectScaled(toFit: size)
+
+        // upload to backend
+        //self.profileImage.image = scaledImage
+        uploadProfilePicture(picture: scaledImage)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadProfilePicture(picture: UIImage) {
+        // Upload profile picture endpoint
+        let url = "http://18.219.112.140:3200/api/v1/ios-upload/"
+        //print("Called")
+        let imageData = picture.jpegData(compressionQuality: 1.0)
+        //print("Here")
+        //let baseString = imageData!.base64EncodedData(options: .lineLength64Characters)
+        let baseString = imageData!.base64EncodedString(options: .lineLength64Characters)
+        //let fileType = imageData.t
+        //let converted = String(data: imageData, encoding: .utf8)
+        // Upload avatar POST parameter
+        let params: [String : Any] = [
+            "avatar": baseString
+        ]
+
+        // HTTP Request
+//        AF.upload(multipartFormData: { multipartFormData in
+//            multipartFormData.append(baseString, withName: "avatar", mimeType: "image/jpeg")}, to: url, method: .post).responseJSON { (response) in
+//                 switch response.result {
+//                        case .success(let value):
+//                            if let data = value as? [String : Any] {
+//                                print(data)
+//                                if (data["status"] as! String == "success") {
+//                                    print("Here")
+//                                }
+//                                else { print("Failed") }
+//                            }
+//                        case .failure(let error):
+//                            print(error.localizedDescription)
+//                    }
+//            }
+        
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        if (data["status"] as! String == "success") {
+                            print("Here")
+                        }
+                        else { print("Failed") }
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+        
     }
     
     /*
