@@ -626,7 +626,6 @@
                                 <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="EOQ-sC-Waj"/>
-                                    <constraint firstAttribute="width" constant="123" id="ejG-3u-G2s"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Leave Group">
@@ -637,6 +636,9 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="leaveGroup:" destination="C5N-r8-eyU" eventType="touchUpInside" id="Q7Y-Qr-Hpe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -669,6 +671,7 @@
                         <outlet property="descriptionLabel" destination="pxH-GJ-r56" id="T71-Pi-QXx"/>
                         <outlet property="groupDescButton" destination="2Fy-bj-mSP" id="4f4-54-4Hv"/>
                         <outlet property="groupNameButton" destination="0TP-0D-LaO" id="Ipw-TB-aQe"/>
+                        <outlet property="leaveGroupButton" destination="lLr-ML-TFy" id="xPg-JK-VZE"/>
                         <outlet property="pinSwitch" destination="Ga6-hh-iTb" id="g5Q-bj-hSu"/>
                     </connections>
                 </viewController>

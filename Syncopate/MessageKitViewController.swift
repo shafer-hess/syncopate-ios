@@ -61,8 +61,6 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(group)
-        
         // Get Group ID
         groupId = group["group__id"] as! Int
         
