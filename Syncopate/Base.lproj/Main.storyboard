@@ -592,12 +592,18 @@
                                 <state key="normal" title="   Edit Group Name" image="pencil.circle" catalog="system">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="editGroupName:" destination="C5N-r8-eyU" eventType="touchUpInside" id="jns-Wu-kUq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fy-bj-mSP">
                                 <rect key="frame" x="16" y="255.33333333333337" width="217" height="22"/>
                                 <state key="normal" title="   Edit Group Description" image="doc.text" catalog="system">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="editGroupDesc:" destination="C5N-r8-eyU" eventType="touchUpInside" id="Nk8-m6-Qmj"/>
+                                </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ga6-hh-iTb">
                                 <rect key="frame" x="16" y="302.33333333333331" width="51" height="31"/>
@@ -605,6 +611,9 @@
                                     <constraint firstAttribute="height" constant="31" id="UBN-hg-QB8"/>
                                     <constraint firstAttribute="width" constant="49" id="ehf-Cc-TC2"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="pinGroup:" destination="C5N-r8-eyU" eventType="valueChanged" id="Z8Z-ll-6df"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMA-dv-lGw">
                                 <rect key="frame" x="83" y="307.33333333333331" width="76" height="21"/>

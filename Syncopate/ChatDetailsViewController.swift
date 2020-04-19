@@ -6,6 +6,7 @@
 //  Copyright © 2020 Syncopate. All rights reserved.
 //
 
+import Alamofire
 import UIKit
 
 class ChatDetailsViewController: UIViewController {
@@ -16,15 +17,82 @@ class ChatDetailsViewController: UIViewController {
     @IBOutlet weak var pinSwitch: UISwitch!
     
     // Variables
-    var groupId: Int!
+    var groupId: Int = -1
     var group: NSDictionary = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = group["group__name"] as! String
+        // Change title of view controller
+        self.title = group["group__name"] as? String
+        
+        // Populate description label
+        if(group["group__description"] as? String == "") {
+            descriptionLabel.isHidden = true
+        } else {
+            descriptionLabel.text = group["group__description"] as? String
+        }
+        
+        // Asign pinned switch state
+        if(group["pinned"] as! Bool) {
+            pinSwitch.setOn(true, animated: true)
+        } else {
+            pinSwitch.setOn(false, animated: true)
+        }
+        
     }
 
+    @IBAction func editGroupName(_ sender: Any) {
+        // Change Name Modal
+        let changeNameAlert = UIAlertController(title: "Change Group Name", message: "Enter new group name:", preferredStyle: .alert)
+        changeNameAlert.addTextField { (textField) in
+            textField.text = self.group["group__name"] as? String
+        }
+        
+        // Change Name Buttons
+        let cancelButton = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
+        let changeButton = UIAlertAction(title: "Change Name", style: .default) { (action) in
+            
+            // HTTP Request
+            let url = "http://18.219.112.140:8000/api/v1/edit-group-name/"
+            
+            let newName: String = changeNameAlert.textFields![0].text!
+            
+            let params: [String : Any] = [
+                "group_id": self.groupId,
+                "name": newName
+            ]
+            
+            AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+
+                switch response.result {
+                    case .success(let value):
+                        if let data = value as? [String : Any] {
+                            if(data["status"] as! String == "success") {
+                                self.title = newName
+                            }
+                        }
+
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                }
+            }
+        }
+        
+        // Add buttons and present modal
+        changeNameAlert.addAction(cancelButton)
+        changeNameAlert.addAction(changeButton)
+        self.present(changeNameAlert, animated: true, completion: nil)
+    }
+    
+    @IBAction func editGroupDesc(_ sender: Any) {
+    
+    }
+    
+    @IBAction func pinGroup(_ sender: Any) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -34,5 +102,4 @@ class ChatDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
