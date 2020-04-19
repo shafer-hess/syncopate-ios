@@ -148,4 +148,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         chatsTableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    @IBAction func rewindToChats(unwindSegue: UIStoryboardSegue) {}
+    
 }

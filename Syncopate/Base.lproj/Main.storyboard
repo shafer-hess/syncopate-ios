@@ -638,6 +638,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="leaveGroup:" destination="C5N-r8-eyU" eventType="touchUpInside" id="Q7Y-Qr-Hpe"/>
+                                    <segue destination="acI-zR-0aV" kind="unwind" identifier="rewindToChats" unwindAction="rewindToChatsWithUnwindSegue:" id="rRu-qn-Adg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -676,6 +677,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGc-pG-Yjx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="acI-zR-0aV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5165.6000000000004" y="-580.04926108374389"/>
         </scene>

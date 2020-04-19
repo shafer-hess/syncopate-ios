@@ -179,7 +179,7 @@ class ChatDetailsViewController: UIViewController {
                     case .success(let value):
                         if let data = value as? [String : Any] {
                             if(data["status"] as! String == "success") {
-                                // TODO: Unwind segue
+                                self.performSegue(withIdentifier: "rewindToChats", sender: self)
                             }
                         }
 
