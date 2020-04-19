@@ -172,38 +172,91 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPP-vH-oGR">
+                                <rect key="frame" x="15" y="382" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="DYD-PW-nzg"/>
+                                    <constraint firstAttribute="width" constant="25" id="jBg-5h-rPh"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="square" catalog="system"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direct Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHQ-8p-HyI">
+                                <rect key="frame" x="48" y="384" width="311" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEb-9u-Puq">
+                                <rect key="frame" x="281" y="423" width="78" height="30"/>
+                                <color key="backgroundColor" red="0.20609188079999999" green="0.65054070949999998" blue="0.98525851959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7Td-Zz-WuW"/>
+                                    <constraint firstAttribute="width" constant="78" id="rZ6-h4-a5i"/>
+                                </constraints>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bf6-5q-raY"/>
+                                    <action selector="onSubmit:" destination="PcM-J3-fvd" eventType="touchUpInside" id="kuJ-kE-399"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Y3X-B9-KO2" firstAttribute="bottom" secondItem="eHQ-8p-HyI" secondAttribute="bottom" constant="317" id="2Pw-wB-6pZ"/>
                             <constraint firstItem="3Zt-jB-nB2" firstAttribute="top" secondItem="HX7-Ij-jOe" secondAttribute="bottom" constant="40" id="2dy-Wr-OCm"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="fe3-gJ-WN0" secondAttribute="trailing" constant="16" id="4Sy-ZB-QYy"/>
                             <constraint firstItem="3Zt-jB-nB2" firstAttribute="leading" secondItem="Y3X-B9-KO2" secondAttribute="leading" constant="15" id="7Kr-zf-RUx"/>
                             <constraint firstItem="HX7-Ij-jOe" firstAttribute="leading" secondItem="lGg-A6-CsK" secondAttribute="trailing" constant="8" id="Cgo-hD-9nQ"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="3dX-eU-l9q" secondAttribute="trailing" constant="312" id="CjO-5v-3Uc"/>
                             <constraint firstItem="lGg-A6-CsK" firstAttribute="leading" secondItem="Y3X-B9-KO2" secondAttribute="leading" constant="15" id="GiC-Ya-Lai"/>
+                            <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="sEb-9u-Puq" secondAttribute="trailing" constant="16" id="HQh-bi-ook"/>
                             <constraint firstItem="HX7-Ij-jOe" firstAttribute="leading" secondItem="lGg-A6-CsK" secondAttribute="trailing" constant="8" id="MiK-BU-Ug9"/>
                             <constraint firstItem="3dX-eU-l9q" firstAttribute="leading" secondItem="Y3X-B9-KO2" secondAttribute="leading" constant="15" id="Mjw-vY-5s0"/>
+                            <constraint firstItem="lPP-vH-oGR" firstAttribute="top" secondItem="fe3-gJ-WN0" secondAttribute="bottom" constant="24" id="OfG-vo-aIW"/>
+                            <constraint firstItem="eHQ-8p-HyI" firstAttribute="top" secondItem="fe3-gJ-WN0" secondAttribute="bottom" constant="26" id="WR0-Dp-HHz"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="1Bs-Z8-7is" secondAttribute="trailing" constant="16" id="X1a-0p-Y5d"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="HX7-Ij-jOe" secondAttribute="trailing" constant="16" id="YIR-on-zxb"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="3Zt-jB-nB2" secondAttribute="trailing" constant="16" id="ZGU-CF-VXJ"/>
                             <constraint firstItem="fe3-gJ-WN0" firstAttribute="leading" secondItem="Y3X-B9-KO2" secondAttribute="leading" constant="15" id="bdB-Pb-Tpb"/>
+                            <constraint firstItem="eHQ-8p-HyI" firstAttribute="leading" secondItem="lPP-vH-oGR" secondAttribute="trailing" constant="8" id="c9P-wu-bzU"/>
                             <constraint firstItem="HX7-Ij-jOe" firstAttribute="top" secondItem="1Bs-Z8-7is" secondAttribute="bottom" constant="33" id="dSX-YQ-Fh1"/>
                             <constraint firstItem="lGg-A6-CsK" firstAttribute="top" secondItem="1Bs-Z8-7is" secondAttribute="bottom" constant="20" id="e5H-fN-NTl"/>
+                            <constraint firstItem="sEb-9u-Puq" firstAttribute="top" secondItem="eHQ-8p-HyI" secondAttribute="bottom" constant="16" id="hmK-6Q-wu3"/>
                             <constraint firstItem="fe3-gJ-WN0" firstAttribute="top" secondItem="3Zt-jB-nB2" secondAttribute="bottom" constant="8" id="i2X-fX-flv"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="bottom" secondItem="fe3-gJ-WN0" secondAttribute="bottom" constant="366" id="jLT-ME-Rv6"/>
                             <constraint firstItem="1Bs-Z8-7is" firstAttribute="top" secondItem="3dX-eU-l9q" secondAttribute="bottom" id="mTG-sx-4kS"/>
                             <constraint firstItem="1Bs-Z8-7is" firstAttribute="leading" secondItem="Y3X-B9-KO2" secondAttribute="leading" constant="15" id="nQD-xa-QDI"/>
                             <constraint firstItem="3dX-eU-l9q" firstAttribute="top" secondItem="Y3X-B9-KO2" secondAttribute="top" constant="20" id="rgs-fO-QyG"/>
+                            <constraint firstItem="lPP-vH-oGR" firstAttribute="leading" secondItem="Y3X-B9-KO2" secondAttribute="leading" constant="15" id="uiE-al-VWj"/>
+                            <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="eHQ-8p-HyI" secondAttribute="trailing" constant="16" id="utq-Rc-joS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y3X-B9-KO2"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6Io-eR-wJ2" appends="YES" id="cRo-AR-MIS"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="descriptionTextView" destination="fe3-gJ-WN0" id="bLR-ed-7dD"/>
+                        <outlet property="dmButton" destination="lPP-vH-oGR" id="II2-6V-i5d"/>
                         <outlet property="nameField" destination="HX7-Ij-jOe" id="IWh-Zr-sOs"/>
                         <outlet property="profileImage" destination="lGg-A6-CsK" id="gzn-Pf-Zit"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cu6-I4-Ni4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6Io-eR-wJ2">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="PcM-J3-fvd" id="qOk-2s-5Q5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3306.4000000000001" y="-1263.5467980295566"/>
         </scene>
@@ -865,5 +918,6 @@
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.bubble" catalog="system" width="128" height="110"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="square" catalog="system" width="128" height="114"/>
     </resources>
 </document>
