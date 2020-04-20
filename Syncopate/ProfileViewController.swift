@@ -22,6 +22,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         getUserInfo()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     @IBAction func onEditPicture(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -89,7 +93,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Resize
         let size = CGSize(width: 100, height: 100)
         let scaledImage = image.af.imageAspectScaled(toFit: size)
-
+        
         // upload to backend
         //self.profileImage.image = scaledImage
         uploadProfilePicture(picture: scaledImage)
@@ -98,52 +102,23 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func uploadProfilePicture(picture: UIImage) {
         // Upload profile picture endpoint
-        let url = "http://18.219.112.140:8000/api/v1/ios-upload/"
-        //print("Called")
+        let url = "http://18.219.112.140:8000/api/v1/upload-avatar/"
         let imageData = picture.jpegData(compressionQuality: 1.0)
-        //print("Here")
-        //let baseString = imageData!.base64EncodedData(options: .lineLength64Characters)
-        let header = "data:image/jpeg;base64,"
-        let baseString = header + imageData!.base64EncodedString(options: .lineLength64Characters)
-        print(baseString)
-        //let fileType = imageData.t
-        //let converted = String(data: imageData, encoding: .utf8)
-        // Upload avatar POST parameter
-        let params: [String : Any] = [
-            "avatar": baseString
-        ]
 
         // HTTP Request
-//        AF.upload(multipartFormData: { multipartFormData in
-//            multipartFormData.append(baseString, withName: "avatar", mimeType: "image/jpeg")}, to: url, method: .post).responseJSON { (response) in
-//                 switch response.result {
-//                        case .success(let value):
-//                            if let data = value as? [String : Any] {
-//                                print(data)
-//                                if (data["status"] as! String == "success") {
-//                                    print("Here")
-//                                }
-//                                else { print("Failed") }
-//                            }
-//                        case .failure(let error):
-//                            print(error.localizedDescription)
-//                    }
-//            }
-        
-        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
-            switch response.result {
-                case .success(let value):
-                    if let data = value as? [String : Any] {
-                        if (data["status"] as! String == "success") {
-                            print("Here")
-                        }
-                        else { print("Failed") }
+        AF.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imageData!, withName: "avatar", fileName: "temp", mimeType: "image/jpeg")}, to: url, method: .post).responseJSON { (response) in
+                 switch response.result {
+                        case .success(let value):
+                            if let data = value as? [String : Any] {
+                                if (data["status"] as! String == "success") {
+                                    self.profileImage.image = picture
+                                }
+                            }
+                        case .failure(let error):
+                            print(error.localizedDescription)
                     }
-                case .failure(let error):
-                    print(error.localizedDescription)
             }
-        }
-        
     }
     
     /*
