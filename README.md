@@ -56,7 +56,7 @@ Syncopate provides a unified solution for all communication between Purdue stude
 - [x] User can change their password
 - [ ] User can update their status
 - [ ] User can like other user messages
-- [ ] User can pin chats 
+- [x] User can pin chats 
 
 ### 2. Screen Archetypes
 
