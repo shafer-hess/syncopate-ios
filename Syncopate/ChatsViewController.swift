@@ -58,6 +58,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if(group["group__description"] as? String == "") {
             cell.descriptionLabel.isHidden = true
         } else {
+            cell.descriptionLabel.isHidden = false
             cell.descriptionLabel.text = group["group__description"] as? String
         }
         cell.profileView.af.setImage(withURL: imageUrl)
