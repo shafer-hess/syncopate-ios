@@ -13,6 +13,7 @@
 		B81904542444C8D400FDBA97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B819044F2444C8D300FDBA97 /* Main.storyboard */; };
 		B81904552444C8D400FDBA97 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81904512444C8D300FDBA97 /* NotificationCell.swift */; };
 		B81904562444C8D400FDBA97 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81904522444C8D300FDBA97 /* NotificationsViewController.swift */; };
+		B81904582446309200FDBA97 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81904572446309200FDBA97 /* PasswordViewController.swift */; };
 		CF531C85243C05D000894F2A /* ChatDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF531C84243C05D000894F2A /* ChatDetailsViewController.swift */; };
 		CF531C87243D25AE00894F2A /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF531C86243D25AE00894F2A /* FriendsViewController.swift */; };
 		CF531C89243D25B800894F2A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF531C88243D25B800894F2A /* ProfileViewController.swift */; };
@@ -41,6 +42,7 @@
 		B81904502444C8D300FDBA97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		B81904512444C8D300FDBA97 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		B81904522444C8D300FDBA97 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		B81904572446309200FDBA97 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		CE01298E6FE862E547CC2CF3 /* Pods-Syncopate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syncopate.debug.xcconfig"; path = "Target Support Files/Pods-Syncopate/Pods-Syncopate.debug.xcconfig"; sourceTree = "<group>"; };
 		CF531C84243C05D000894F2A /* ChatDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailsViewController.swift; sourceTree = "<group>"; };
 		CF531C86243D25AE00894F2A /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */,
 				CF77A718240D696100E8B9D7 /* Main.storyboard */,
 				B81242C0244CCE83002B7BC1 /* CreateGroupViewController.swift */,
+				B81904572446309200FDBA97 /* PasswordViewController.swift */,
 				CF77A714240D696100E8B9D7 /* SceneDelegate.swift */,
 				CF595F65243A2E1600545FB7 /* ChatsViewController.swift */,
 				CF531C84243C05D000894F2A /* ChatDetailsViewController.swift */,
@@ -288,6 +291,7 @@
 				CF90E48E2436DCE700F91109 /* RegisterViewController.swift in Sources */,
 				B81904552444C8D400FDBA97 /* NotificationCell.swift in Sources */,
 				CF531C8B243E073500894F2A /* MessageKitViewController.swift in Sources */,
+				B81904582446309200FDBA97 /* PasswordViewController.swift in Sources */,
 				CF77A713240D696100E8B9D7 /* AppDelegate.swift in Sources */,
 				B81242C1244CCE84002B7BC1 /* CreateGroupViewController.swift in Sources */,
 				CFF2FC8024429597006C70B8 /* FriendsCell.swift in Sources */,
@@ -481,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Emily-Ou.Syncopate";
+				PRODUCT_BUNDLE_IDENTIFIER = "Emily-Ou";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
