@@ -180,9 +180,12 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" image="square" catalog="system"/>
+                                <connections>
+                                    <action selector="onDMButton:" destination="PcM-J3-fvd" eventType="touchUpInside" id="QM2-Tz-M31"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direct Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHQ-8p-HyI">
-                                <rect key="frame" x="48" y="438" width="311" height="23"/>
+                                <rect key="frame" x="48" y="436" width="311" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -222,7 +225,7 @@
                             <constraint firstItem="HX7-Ij-jOe" firstAttribute="leading" secondItem="lGg-A6-CsK" secondAttribute="trailing" constant="8" id="MiK-BU-Ug9"/>
                             <constraint firstItem="3dX-eU-l9q" firstAttribute="leading" secondItem="Y3X-B9-KO2" secondAttribute="leading" constant="15" id="Mjw-vY-5s0"/>
                             <constraint firstItem="lPP-vH-oGR" firstAttribute="top" secondItem="fe3-gJ-WN0" secondAttribute="bottom" constant="24" id="OfG-vo-aIW"/>
-                            <constraint firstItem="eHQ-8p-HyI" firstAttribute="top" secondItem="fe3-gJ-WN0" secondAttribute="bottom" constant="26" id="WR0-Dp-HHz"/>
+                            <constraint firstItem="eHQ-8p-HyI" firstAttribute="top" secondItem="fe3-gJ-WN0" secondAttribute="bottom" constant="24" id="WR0-Dp-HHz"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="1Bs-Z8-7is" secondAttribute="trailing" constant="16" id="X1a-0p-Y5d"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="HX7-Ij-jOe" secondAttribute="trailing" constant="16" id="YIR-on-zxb"/>
                             <constraint firstItem="Y3X-B9-KO2" firstAttribute="trailing" secondItem="3Zt-jB-nB2" secondAttribute="trailing" constant="16" id="ZGU-CF-VXJ"/>

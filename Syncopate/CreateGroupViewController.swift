@@ -46,12 +46,24 @@ class CreateGroupViewController: UIViewController, UITextViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onDMButton(_ sender: Any) {
+        let toBeChecked = !checked
+        
+        if toBeChecked {
+            self.setChecked(true)
+        }
+        else {
+            self.setChecked(false)
+        }
+    }
+    
+    // set dm check
     func setChecked(_ isChecked: Bool) {
         checked = isChecked
         if checked {
-            dmButton.setImage(UIImage(named: "checkmark.square"), for: UIControl.State.normal)
+            dmButton.setImage(UIImage(systemName: "checkmark.square"), for: UIControl.State.normal)
         } else {
-            dmButton.setImage(UIImage(named: "square"), for: UIControl.State.normal)
+            dmButton.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
         }
     }
     
@@ -63,7 +75,7 @@ class CreateGroupViewController: UIViewController, UITextViewDelegate {
         let params: [String : Any] = [
             "name": nameField.text!,
             "description": descriptionTextView.text!,
-            "dm": false
+            "dm": checked
         ]
         
         // HTTP Request
