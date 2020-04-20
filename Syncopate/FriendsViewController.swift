@@ -168,7 +168,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 case .success(let value):
                     if let data = value as? [String : Any] {
                         self.friendRequests = data["requests"] as! NSArray
-                        print(self.friendRequests.count)
                         cellCount = self.friendRequests.count
                         self.getBadge()
                         if controller {
@@ -185,7 +184,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // Count for notifications
     func getCount() -> Int {
-        print("Cell count: \(cellCount)")
         return cellCount
     }
     
