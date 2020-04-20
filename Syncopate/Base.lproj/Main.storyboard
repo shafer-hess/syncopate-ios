@@ -641,20 +641,63 @@
                                     <segue destination="acI-zR-0aV" kind="unwind" identifier="rewindToChats" unwindAction="rewindToChatsWithUnwindSegue:" id="rRu-qn-Adg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aT-la-Ugv">
+                                <rect key="frame" x="16" y="381.33333333333331" width="65.666666666666671" height="27.666666666666686"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nux-tX-OmZ">
+                                <rect key="frame" x="16" y="417" width="343" height="229"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="UsersCell" id="ba2-xZ-BCk" customClass="UsersCell" customModule="Syncopate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ba2-xZ-BCk" id="JhK-qL-NXt">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doi-od-0eu">
+                                                    <rect key="frame" x="15" y="11.999999999999998" width="37" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="doi-od-0eu" secondAttribute="trailing" constant="276" id="kdj-NA-xfS"/>
+                                                <constraint firstItem="doi-od-0eu" firstAttribute="centerY" secondItem="JhK-qL-NXt" secondAttribute="centerY" id="oyG-2e-M9h"/>
+                                                <constraint firstItem="doi-od-0eu" firstAttribute="leading" secondItem="JhK-qL-NXt" secondAttribute="leadingMargin" id="t7k-E6-clp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userLabel" destination="doi-od-0eu" id="b57-NX-qmI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Ga6-hh-iTb" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="0Qd-8q-Wuu"/>
+                            <constraint firstItem="lLr-ML-TFy" firstAttribute="top" secondItem="Nux-tX-OmZ" secondAttribute="bottom" constant="16" id="1Rg-JT-guM"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="6aT-la-Ugv" secondAttribute="trailing" constant="293.32999999999998" id="2NZ-qd-0JZ"/>
                             <constraint firstItem="pxH-GJ-r56" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="3jY-Xe-31O"/>
                             <constraint firstItem="0TP-0D-LaO" firstAttribute="top" secondItem="pxH-GJ-r56" secondAttribute="bottom" constant="48" id="8wI-01-P3N"/>
+                            <constraint firstItem="Nux-tX-OmZ" firstAttribute="top" secondItem="6aT-la-Ugv" secondAttribute="bottom" constant="8" id="9Nm-lq-VFg"/>
+                            <constraint firstItem="Nux-tX-OmZ" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="DtK-KA-j1x"/>
                             <constraint firstItem="Ga6-hh-iTb" firstAttribute="top" secondItem="2Fy-bj-mSP" secondAttribute="bottom" constant="25" id="EiM-8U-gOE"/>
                             <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0TP-0D-LaO" secondAttribute="trailing" constant="187" id="LJI-k0-dKN"/>
                             <constraint firstItem="0TP-0D-LaO" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="QZv-Df-TQF"/>
                             <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gMA-dv-lGw" secondAttribute="trailing" constant="226" id="RXe-tD-2ji"/>
                             <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="2Fy-bj-mSP" secondAttribute="trailing" constant="142" id="SHd-yV-bUQ"/>
+                            <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" secondItem="Nux-tX-OmZ" secondAttribute="trailing" constant="16" id="Ta9-Ca-em1"/>
                             <constraint firstItem="2Fy-bj-mSP" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="UQ2-Ci-HQV"/>
                             <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" secondItem="pxH-GJ-r56" secondAttribute="trailing" constant="16" id="bKI-V9-5h2"/>
+                            <constraint firstItem="6aT-la-Ugv" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="16" id="bR3-RO-7pz"/>
                             <constraint firstItem="lLr-ML-TFy" firstAttribute="top" secondItem="gMA-dv-lGw" secondAttribute="bottom" constant="333.67000000000002" id="bcs-Kf-J7m"/>
+                            <constraint firstItem="6aT-la-Ugv" firstAttribute="top" secondItem="Ga6-hh-iTb" secondAttribute="bottom" constant="48" id="drL-As-mgz"/>
                             <constraint firstItem="Oo3-2W-Wu2" firstAttribute="trailing" secondItem="lLr-ML-TFy" secondAttribute="trailing" constant="126" id="enD-4I-oCv"/>
                             <constraint firstItem="lLr-ML-TFy" firstAttribute="leading" secondItem="Oo3-2W-Wu2" secondAttribute="leading" constant="126" id="fED-Ns-fGV"/>
                             <constraint firstItem="2Fy-bj-mSP" firstAttribute="top" secondItem="0TP-0D-LaO" secondAttribute="bottom" constant="25" id="fW5-SJ-9AO"/>
@@ -674,6 +717,7 @@
                         <outlet property="groupNameButton" destination="0TP-0D-LaO" id="Ipw-TB-aQe"/>
                         <outlet property="leaveGroupButton" destination="lLr-ML-TFy" id="xPg-JK-VZE"/>
                         <outlet property="pinSwitch" destination="Ga6-hh-iTb" id="g5Q-bj-hSu"/>
+                        <outlet property="usersTableView" destination="Nux-tX-OmZ" id="7Rk-eI-Gkk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGc-pG-Yjx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

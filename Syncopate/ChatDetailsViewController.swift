@@ -9,7 +9,7 @@
 import Alamofire
 import UIKit
 
-class ChatDetailsViewController: UIViewController {
+class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Outlets
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var groupNameButton: UIButton!
@@ -17,15 +17,21 @@ class ChatDetailsViewController: UIViewController {
     @IBOutlet weak var leaveGroupButton: UIButton!
     @IBOutlet weak var pinSwitch: UISwitch!
     
+    @IBOutlet weak var usersTableView: UITableView!
+    
     // Variables
     var groupId: Int = -1
     var group: NSDictionary = [:]
+    var users: NSArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Change title of view controller
         self.title = group["group__name"] as? String
+        
+        // Set Users Array from Group
+        users = group["users"] as! NSArray
         
         // Populate description label
         if(group["group__description"] as? String == "") {
@@ -41,6 +47,29 @@ class ChatDetailsViewController: UIViewController {
             pinSwitch.setOn(false, animated: true)
         }
         
+        // Set Delegates
+        usersTableView.delegate = self
+        usersTableView.dataSource = self
+        
+        // Other Table Settings
+        usersTableView.alwaysBounceVertical = false
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = usersTableView.dequeueReusableCell(withIdentifier: "UsersCell") as! UsersCell
+        
+        let user = users[indexPath.row] as! NSDictionary
+        let first_name = user["user__first_name"] as! String
+        let last_name = user["user__last_name"] as! String
+        
+        let name = first_name + " " + last_name
+        cell.userLabel.text = name
+        
+        return cell
     }
 
     @IBAction func editGroupName(_ sender: Any) {
