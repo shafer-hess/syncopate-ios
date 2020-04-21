@@ -127,6 +127,15 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let email = friend["email"] as? String
         let username = (email?.replacingOccurrences(of: "@purdue.edu", with: ""))!
         
+        // Check availability and set
+        if (friend["available"] as? Bool == true) {
+            cell.statusView.image = UIImage(systemName: "circle.fill")
+            cell.statusView.tintColor = UIColor.green
+        } else {
+            cell.statusView.image = UIImage(systemName: "circle.fill")
+            cell.statusView.tintColor = UIColor.red
+        }
+        
         cell.nameLabel.text = ((first_name)!) + " " + ((last_name)!)
         cell.profileImage.af.setImage(withURL: imageURL)
         cell.usernameLabel.text = username 

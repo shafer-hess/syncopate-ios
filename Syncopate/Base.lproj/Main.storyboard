@@ -407,11 +407,20 @@
                                                         <constraint firstAttribute="height" constant="61.329999999999998" id="pHA-Bf-inf"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vra-hX-af1">
+                                                    <rect key="frame" x="340" y="46" width="20" height="20"/>
+                                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21.329999999999998" id="BQa-QT-fOZ"/>
+                                                        <constraint firstAttribute="width" constant="20" id="dLu-6c-a75"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="BPk-Yv-dTY" firstAttribute="leading" secondItem="zA2-UP-ZHd" secondAttribute="trailing" constant="8" id="298-u4-Eij"/>
                                                 <constraint firstItem="zA2-UP-ZHd" firstAttribute="leading" secondItem="9mj-We-NN0" secondAttribute="leadingMargin" id="5VL-nc-VP3"/>
                                                 <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="6L6-GB-XX8" secondAttribute="trailing" constant="229.33000000000001" id="6WW-pJ-myw"/>
+                                                <constraint firstItem="vra-hX-af1" firstAttribute="trailing" secondItem="9mj-We-NN0" secondAttribute="trailingMargin" id="Aqd-fy-ihK"/>
                                                 <constraint firstItem="zA2-UP-ZHd" firstAttribute="top" secondItem="9mj-We-NN0" secondAttribute="topMargin" constant="14" id="C07-ed-8cd"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="BPk-Yv-dTY" secondAttribute="bottom" constant="21" id="CKy-FE-gHL"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zA2-UP-ZHd" secondAttribute="bottom" constant="12.67" id="DNR-oS-b7w"/>
@@ -420,11 +429,13 @@
                                                 <constraint firstItem="6L6-GB-XX8" firstAttribute="leading" secondItem="zA2-UP-ZHd" secondAttribute="trailing" constant="8" id="TqU-0b-oqZ"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="BPk-Yv-dTY" secondAttribute="trailing" constant="5" id="d4x-6N-16X"/>
                                                 <constraint firstItem="BPk-Yv-dTY" firstAttribute="top" secondItem="6L6-GB-XX8" secondAttribute="bottom" constant="8" id="hqO-Dy-5CE"/>
+                                                <constraint firstItem="vra-hX-af1" firstAttribute="top" secondItem="9mj-We-NN0" secondAttribute="topMargin" constant="34" id="oMN-re-Wjm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="6L6-GB-XX8" id="O9W-Yq-BDH"/>
                                             <outlet property="profileImage" destination="zA2-UP-ZHd" id="ggI-tm-jfU"/>
+                                            <outlet property="statusView" destination="vra-hX-af1" id="T21-l6-EzP"/>
                                             <outlet property="usernameLabel" destination="BPk-Yv-dTY" id="voZ-3I-m3e"/>
                                         </connections>
                                     </tableViewCell>
@@ -1250,6 +1261,7 @@
         <image name="add-user" width="200" height="200"/>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
         <image name="cancel-button" width="200" height="200"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="confirm-button" width="200" height="200"/>
         <image name="doc.text" catalog="system" width="115" height="128"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
