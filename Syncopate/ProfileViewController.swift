@@ -50,10 +50,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
-    @IBAction func onChangePassword(_ sender: Any) {
-        //self.performSegue(withIdentifier: "passwordSegue", sender: self)
-    }
-    
     func getUserInfo() {
         // user info endpoint
         let url = "http://18.219.112.140:8000/api/v1/identify/"
@@ -95,7 +91,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let scaledImage = image.af.imageAspectScaled(toFit: size)
         
         // upload to backend
-        //self.profileImage.image = scaledImage
         uploadProfilePicture(picture: scaledImage)
         dismiss(animated: true, completion: nil)
     }
