@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C8152994C66050497CAC1F2 /* Pods_Syncopate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D1AB1D90196B6C25002D80 /* Pods_Syncopate.framework */; };
+		B81242C1244CCE84002B7BC1 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81242C0244CCE83002B7BC1 /* CreateGroupViewController.swift */; };
 		B81904532444C8D400FDBA97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B819044D2444C8D300FDBA97 /* LaunchScreen.storyboard */; };
 		B81904542444C8D400FDBA97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B819044F2444C8D300FDBA97 /* Main.storyboard */; };
 		B81904552444C8D400FDBA97 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81904512444C8D300FDBA97 /* NotificationCell.swift */; };
@@ -26,6 +27,7 @@
 		CF77A71F240D696300E8B9D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */; };
 		CF90E48C2436BB5A00F91109 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF90E48B2436BB5A00F91109 /* LoginViewController.swift */; };
 		CF90E48E2436DCE700F91109 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF90E48D2436DCE700F91109 /* RegisterViewController.swift */; };
+		CFC14EB1244D1F3B00B8226C /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC14EB0244D1F3B00B8226C /* UsersCell.swift */; };
 		CFF2FC7E24429597006C70B8 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FC7B24429597006C70B8 /* AddFriendViewController.swift */; };
 		CFF2FC7F24429597006C70B8 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FC7C24429597006C70B8 /* AddFriendCell.swift */; };
 		CFF2FC8024429597006C70B8 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2FC7D24429597006C70B8 /* FriendsCell.swift */; };
@@ -36,6 +38,7 @@
 		40221978B109C89268624DCA /* Pods-SyncopateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SyncopateTests.debug.xcconfig"; path = "Target Support Files/Pods-SyncopateTests/Pods-SyncopateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		540ADE649B963F21EE0EB3BA /* Pods-SyncopateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SyncopateTests.release.xcconfig"; path = "Target Support Files/Pods-SyncopateTests/Pods-SyncopateTests.release.xcconfig"; sourceTree = "<group>"; };
 		6944205DBDE0062D91F97A65 /* Pods_SyncopateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SyncopateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B81242C0244CCE83002B7BC1 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		B819044E2444C8D300FDBA97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B81904502444C8D300FDBA97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		B81904512444C8D300FDBA97 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		CF77A72B240D696300E8B9D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF90E48B2436BB5A00F91109 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CF90E48D2436DCE700F91109 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		CFC14EB0244D1F3B00B8226C /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		CFF2FC7B24429597006C70B8 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		CFF2FC7C24429597006C70B8 /* AddFriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
 		CFF2FC7D24429597006C70B8 /* FriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
@@ -129,21 +133,23 @@
 			isa = PBXGroup;
 			children = (
 				B819044C2444C8D300FDBA97 /* Base.lproj */,
-				B81904512444C8D300FDBA97 /* NotificationCell.swift */,
 				B81904522444C8D300FDBA97 /* NotificationsViewController.swift */,
-				CFF2FC7C24429597006C70B8 /* AddFriendCell.swift */,
 				CFF2FC7B24429597006C70B8 /* AddFriendViewController.swift */,
-				CFF2FC7D24429597006C70B8 /* FriendsCell.swift */,
 				CF77A71B240D696300E8B9D7 /* Assets.xcassets */,
 				CF77A712240D696100E8B9D7 /* AppDelegate.swift */,
 				CF77A720240D696300E8B9D7 /* Info.plist */,
 				CF77A71D240D696300E8B9D7 /* LaunchScreen.storyboard */,
 				CF77A718240D696100E8B9D7 /* Main.storyboard */,
+				B81242C0244CCE83002B7BC1 /* CreateGroupViewController.swift */,
 				B81904572446309200FDBA97 /* PasswordViewController.swift */,
 				CF77A714240D696100E8B9D7 /* SceneDelegate.swift */,
 				CF595F65243A2E1600545FB7 /* ChatsViewController.swift */,
 				CF531C84243C05D000894F2A /* ChatDetailsViewController.swift */,
+				CFF2FC7D24429597006C70B8 /* FriendsCell.swift */,
 				CF595F67243A41F500545FB7 /* ChatsCell.swift */,
+				CFC14EB0244D1F3B00B8226C /* UsersCell.swift */,
+				B81904512444C8D300FDBA97 /* NotificationCell.swift */,
+				CFF2FC7C24429597006C70B8 /* AddFriendCell.swift */,
 				CF90E48B2436BB5A00F91109 /* LoginViewController.swift */,
 				CF90E48D2436DCE700F91109 /* RegisterViewController.swift */,
 				CF531C86243D25AE00894F2A /* FriendsViewController.swift */,
@@ -290,8 +296,10 @@
 				CF531C8B243E073500894F2A /* MessageKitViewController.swift in Sources */,
 				B81904582446309200FDBA97 /* PasswordViewController.swift in Sources */,
 				CF77A713240D696100E8B9D7 /* AppDelegate.swift in Sources */,
+				B81242C1244CCE84002B7BC1 /* CreateGroupViewController.swift in Sources */,
 				CFF2FC8024429597006C70B8 /* FriendsCell.swift in Sources */,
 				CF595F66243A2E1600545FB7 /* ChatsViewController.swift in Sources */,
+				CFC14EB1244D1F3B00B8226C /* UsersCell.swift in Sources */,
 				CFF2FC7E24429597006C70B8 /* AddFriendViewController.swift in Sources */,
 				CF77A715240D696100E8B9D7 /* SceneDelegate.swift in Sources */,
 				CF531C85243C05D000894F2A /* ChatDetailsViewController.swift in Sources */,
@@ -456,13 +464,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9STX7CHW76;
+				DEVELOPMENT_TEAM = NE6M9B72BG;
 				INFOPLIST_FILE = Syncopate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Emily-Ou.Syncopate";
+				PRODUCT_BUNDLE_IDENTIFIER = shafer.hess.Syncopate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,13 +483,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9STX7CHW76;
+				DEVELOPMENT_TEAM = NE6M9B72BG;
 				INFOPLIST_FILE = Syncopate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Emily-Ou";
+				PRODUCT_BUNDLE_IDENTIFIER = shafer.hess.Syncopate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

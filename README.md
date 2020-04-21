@@ -36,10 +36,10 @@ Syncopate provides a unified solution for all communication between Purdue stude
 
 - [x] User can create an account
 - [x] User can login to their account
-- [ ] User can view their profile
+- [x] User can view their profile
 - [x] User can see list of their chats
 - [x] User can send messages
-- [ ] User can create groups
+- [x] User can create groups
 - [ ] User can add users to a group
 - [x] User can add friends
 - [x] Users can search for other users
@@ -48,15 +48,15 @@ Syncopate provides a unified solution for all communication between Purdue stude
 
 **Optional Nice-to-have Stories**
 
-- [ ] User can edit group details
+- [x] User can edit group details
 - [ ] User can upload a profile picture
 - [ ] User can upload a group profile picture
 - [x] User can send photo messages
 - [ ] User can send file messages
-- [ ] User can change their password
+- [x] User can change their password
 - [ ] User can update their status
 - [ ] User can like other user messages
-- [ ] User can pin chats 
+- [x] User can pin chats 
 
 ### 2. Screen Archetypes
 
@@ -125,6 +125,17 @@ Link to full gif: https://i.imgur.com/A0HKRo1.gif
 
 <img src="https://media2.giphy.com/media/gjy8s9svHukSW5cZwi/giphy.gif?cid=4d1e4f292fc7065937401e8f86bd131b3d5870c53fd8abd1&rid=giphy.gif" width=250>
 Link to full gif: https://i.imgur.com/86Okmgi.gif
+
+
+## Sprint 3
+- [x] User can view their profile
+- [x] User can create groups
+- [x] User can edit group details
+- [x] User can change their password
+- [x] User can pin chats 
+
+<img src="https://media3.giphy.com/media/W6cgSzWVFM1JERTM4b/giphy.gif?cid=4d1e4f29df3663f235ec3345b22bfad7103e66f54a7da90d&rid=giphy.gif" width=250>
+Link to full video: https://drive.google.com/file/d/10Vmxcv__9XLPQFC9QVXBaQDUpSpxttM-/view?usp=sharing
 
 ## Wireframes
 *We only made digital wireframes <br>
