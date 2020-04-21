@@ -15,15 +15,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var statusSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        getUserInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        getUserInfo()
     }
     
     @IBAction func onEditPicture(_ sender: Any) {
@@ -50,6 +50,37 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
+    @IBAction func onToggle(_ sender: Any) {
+        var available: Bool = false
+        if statusSwitch.isOn {
+            available = true
+        } else {
+            available = false
+        }
+        
+        // Set status enpoint
+        let url = "http://18.219.112.140:8000/api/v1/set-availability/"
+        
+        // POST parameter
+        let status: [String : Any] = [
+            "available": available
+        ]
+        
+        // HTTP Request
+        AF.request(url, method: .post, parameters: status, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        if(data["status"] as! String == "success") {
+                            break
+                        }
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
     func getUserInfo() {
         // user info endpoint
         let url = "http://18.219.112.140:8000/api/v1/identify/"
@@ -70,6 +101,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                         let picURL = (data["profile_pic_url"] as? String)!
                         let imageURL = URL(string: picURL)!
                         self.profileImage.af.setImage(withURL: imageURL)
+                        
+                        // Get status state and set switch
+                        if (data["available"] as? Bool == true) {
+                            self.statusSwitch.setOn(true, animated: true)
+                        } else {
+                            self.statusSwitch.setOn(false, animated: true)
+                        }
                         
                         // Make the profile pic circular
                         self.profileImage.layer.masksToBounds = false
