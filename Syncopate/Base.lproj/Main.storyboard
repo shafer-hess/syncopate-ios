@@ -322,12 +322,22 @@
                                                         <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="B4c-XN-bht" secondAttribute="bottom" id="ism-1j-j0f"/>
                                                     </constraints>
                                                 </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="pin-group-unselected" translatesAutoresizingMaskIntoConstraints="NO" id="e3O-l0-CJ6">
+                                                    <rect key="frame" x="345" y="84" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="JPE-Pv-YaN"/>
+                                                        <constraint firstAttribute="height" constant="15" id="jV3-xX-Id9"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="e3O-l0-CJ6" firstAttribute="trailing" secondItem="9qU-he-ohq" secondAttribute="trailingMargin" id="EY4-Sw-pUs"/>
                                                 <constraint firstItem="mEN-ig-lPH" firstAttribute="top" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="14" id="F49-vl-Gtf"/>
                                                 <constraint firstItem="mEN-ig-lPH" firstAttribute="leading" secondItem="9qU-he-ohq" secondAttribute="leadingMargin" id="RBg-X6-Uzz"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="leading" secondItem="mEN-ig-lPH" secondAttribute="trailing" constant="8" id="Vgq-H8-v3u"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="centerY" secondItem="mEN-ig-lPH" secondAttribute="centerY" id="dMf-6D-tb9"/>
+                                                <constraint firstItem="e3O-l0-CJ6" firstAttribute="bottom" secondItem="9qU-he-ohq" secondAttribute="bottomMargin" id="evr-ox-zrw"/>
+                                                <constraint firstItem="e3O-l0-CJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="61" id="lVO-mP-cYi"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="top" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="20.329999999999998" id="w6M-dE-OaM"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="mEN-ig-lPH" secondAttribute="bottom" constant="12.666666666666671" id="woG-8a-DSp"/>
                                             </constraints>
@@ -365,7 +375,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXS-Ac-uue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3313" y="-580"/>
+            <point key="canvasLocation" x="3312.8000000000002" y="-580.04926108374389"/>
         </scene>
         <!--Friends View-->
         <scene sceneID="3fP-21-IGc">
@@ -1269,6 +1279,7 @@
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="pin-group-unselected" width="200" height="200"/>
         <image name="plus.bubble" catalog="system" width="128" height="110"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="square" catalog="system" width="128" height="114"/>
