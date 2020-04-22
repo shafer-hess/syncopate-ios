@@ -49,10 +49,11 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Retrieve Group Information
         let group = groups[indexPath.row] as! NSDictionary
         
-        // TODO - Update to refer to group data - not currently in response
+        // TODO: UPDATE GROUP IMAGE URL
         // Group Image URL
         let imageUrl = URL(string: "http://18.219.112.140/images/avatars/default.png")!
-        
+        cell.profileView.af.setImage(withURL: imageUrl)
+
         cell.nameLabel.text = group["group__name"] as? String
         
         if(group["group__description"] as? String == "") {
@@ -61,7 +62,15 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.descriptionLabel.isHidden = false
             cell.descriptionLabel.text = group["group__description"] as? String
         }
-        cell.profileView.af.setImage(withURL: imageUrl)
+    
+        if(group["pinned"] as? Int == 1) {
+            cell.pinButton.imageView?.image = UIImage(named: "pin-group-selected")
+        } else {
+            cell.pinButton.imageView?.image = UIImage(named: "pin-group-unselected")
+        }
+        
+        cell.pinButton.tag = indexPath.row
+        cell.pinButton.addTarget(self, action: #selector(pinGroup(sender:)), for: .touchUpInside)
         
         return cell
     }
@@ -132,7 +141,45 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
+    
+    @objc func pinGroup(sender: UIButton) {
+        // Retrieve Group from buttons indexpath tag
+        let group = groups[sender.tag] as! NSDictionary
         
+        // Retrieve current pin status
+        let pinned: Int = group["pinned"] as! Int
+
+        // Set parameters and url for HTTP Request
+        let url = "http://18.219.112.140:8000/api/v1/pin-chat/"
+        let params: [String: Any] = [
+            "group_id": group["group__id"] as! Int,
+            "pinned": (pinned == 0) ? true : false
+        ]
+                
+        // HTTP Request
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+            
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        if(data["status"] as! String == "success") {
+                            // Update Pin Color
+                            if(pinned == 1) {
+                                sender.imageView?.image = UIImage(named: "pin-group-unselected")
+                            } else {
+                                sender.imageView?.image = UIImage(named: "pin-group-selected")
+                            }
+                        } else {
+                            print("Did not pin")
+                        }
+                    }
+            
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller
@@ -153,5 +200,4 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func rewindToChats(unwindSegue: UIStoryboardSegue) {}
-    
 }
