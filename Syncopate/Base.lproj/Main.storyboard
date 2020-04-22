@@ -322,22 +322,22 @@
                                                         <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="B4c-XN-bht" secondAttribute="bottom" id="ism-1j-j0f"/>
                                                     </constraints>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="pin-group-unselected" translatesAutoresizingMaskIntoConstraints="NO" id="e3O-l0-CJ6">
-                                                    <rect key="frame" x="345" y="84" width="15" height="15"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZH-gt-Ycp">
+                                                    <rect key="frame" x="340" y="79" width="20" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="JPE-Pv-YaN"/>
-                                                        <constraint firstAttribute="height" constant="15" id="jV3-xX-Id9"/>
+                                                        <constraint firstAttribute="height" constant="20" id="4M8-CE-5gP"/>
+                                                        <constraint firstAttribute="width" constant="20" id="Jn7-Xh-Xp9"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" image="pin-group-unselected"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="e3O-l0-CJ6" firstAttribute="trailing" secondItem="9qU-he-ohq" secondAttribute="trailingMargin" id="EY4-Sw-pUs"/>
                                                 <constraint firstItem="mEN-ig-lPH" firstAttribute="top" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="14" id="F49-vl-Gtf"/>
                                                 <constraint firstItem="mEN-ig-lPH" firstAttribute="leading" secondItem="9qU-he-ohq" secondAttribute="leadingMargin" id="RBg-X6-Uzz"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="leading" secondItem="mEN-ig-lPH" secondAttribute="trailing" constant="8" id="Vgq-H8-v3u"/>
+                                                <constraint firstItem="xZH-gt-Ycp" firstAttribute="bottom" secondItem="9qU-he-ohq" secondAttribute="bottomMargin" id="Xzj-Gs-ph5"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="centerY" secondItem="mEN-ig-lPH" secondAttribute="centerY" id="dMf-6D-tb9"/>
-                                                <constraint firstItem="e3O-l0-CJ6" firstAttribute="bottom" secondItem="9qU-he-ohq" secondAttribute="bottomMargin" id="evr-ox-zrw"/>
-                                                <constraint firstItem="e3O-l0-CJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="61" id="lVO-mP-cYi"/>
+                                                <constraint firstItem="xZH-gt-Ycp" firstAttribute="trailing" secondItem="9qU-he-ohq" secondAttribute="trailingMargin" id="vP5-U7-gih"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="top" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="20.329999999999998" id="w6M-dE-OaM"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="mEN-ig-lPH" secondAttribute="bottom" constant="12.666666666666671" id="woG-8a-DSp"/>
                                             </constraints>
@@ -345,6 +345,7 @@
                                         <connections>
                                             <outlet property="descriptionLabel" destination="B4c-XN-bht" id="EaX-S2-mOz"/>
                                             <outlet property="nameLabel" destination="JH1-aE-rUZ" id="ybG-IQ-hlB"/>
+                                            <outlet property="pinButton" destination="xZH-gt-Ycp" id="pyw-bo-2F3"/>
                                             <outlet property="profileView" destination="mEN-ig-lPH" id="WKi-U5-amk"/>
                                             <segue destination="Xbm-eZ-rzA" kind="show" identifier="ChatsDetailsSegue" id="qs7-UY-Dsj"/>
                                         </connections>
@@ -374,6 +375,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXS-Ac-uue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lnE-YO-oyw">
+                    <connections>
+                        <action selector="onPin:" destination="5jm-Qa-qbN" id="SJ6-Cs-kL4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3312.8000000000002" y="-580.04926108374389"/>
         </scene>
