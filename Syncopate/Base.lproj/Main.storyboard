@@ -323,20 +323,29 @@
                                                     </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZH-gt-Ycp">
-                                                    <rect key="frame" x="340" y="79" width="20" height="20"/>
+                                                    <rect key="frame" x="345" y="84" width="15" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="4M8-CE-5gP"/>
-                                                        <constraint firstAttribute="width" constant="20" id="Jn7-Xh-Xp9"/>
+                                                        <constraint firstAttribute="height" constant="15" id="4M8-CE-5gP"/>
+                                                        <constraint firstAttribute="width" constant="15" id="Jn7-Xh-Xp9"/>
                                                     </constraints>
                                                     <state key="normal" image="pin-group-unselected"/>
                                                 </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-1j-Vwq">
+                                                    <rect key="frame" x="346" y="46" width="13" height="20.333333333333336"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="23.670000000000002" id="JNL-a1-5Oh"/>
+                                                        <constraint firstAttribute="width" constant="13" id="Vqa-g1-b5y"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mEN-ig-lPH" firstAttribute="top" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="14" id="F49-vl-Gtf"/>
                                                 <constraint firstItem="mEN-ig-lPH" firstAttribute="leading" secondItem="9qU-he-ohq" secondAttribute="leadingMargin" id="RBg-X6-Uzz"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="leading" secondItem="mEN-ig-lPH" secondAttribute="trailing" constant="8" id="Vgq-H8-v3u"/>
                                                 <constraint firstItem="xZH-gt-Ycp" firstAttribute="bottom" secondItem="9qU-he-ohq" secondAttribute="bottomMargin" id="Xzj-Gs-ph5"/>
+                                                <constraint firstItem="0V2-1j-Vwq" firstAttribute="centerY" secondItem="cIJ-4Q-LwX" secondAttribute="centerY" id="Zt9-16-pso"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="centerY" secondItem="mEN-ig-lPH" secondAttribute="centerY" id="dMf-6D-tb9"/>
+                                                <constraint firstItem="xZH-gt-Ycp" firstAttribute="centerX" secondItem="0V2-1j-Vwq" secondAttribute="centerX" id="kbP-sr-fkL"/>
                                                 <constraint firstItem="xZH-gt-Ycp" firstAttribute="trailing" secondItem="9qU-he-ohq" secondAttribute="trailingMargin" id="vP5-U7-gih"/>
                                                 <constraint firstItem="cIJ-4Q-LwX" firstAttribute="top" secondItem="9qU-he-ohq" secondAttribute="topMargin" constant="20.329999999999998" id="w6M-dE-OaM"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="mEN-ig-lPH" secondAttribute="bottom" constant="12.666666666666671" id="woG-8a-DSp"/>
@@ -1277,6 +1286,7 @@
         <image name="add-user" width="200" height="200"/>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
         <image name="cancel-button" width="200" height="200"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="confirm-button" width="200" height="200"/>
         <image name="doc.text" catalog="system" width="115" height="128"/>
