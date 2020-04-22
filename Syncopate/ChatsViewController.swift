@@ -52,7 +52,8 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // TODO: UPDATE GROUP IMAGE URL
         // Group Image URL
         let imageUrl = URL(string: "http://18.219.112.140/images/avatars/default.png")!
-        
+        cell.profileView.af.setImage(withURL: imageUrl)
+
         cell.nameLabel.text = group["group__name"] as? String
         
         if(group["group__description"] as? String == "") {
@@ -70,8 +71,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.pinButton.tag = indexPath.row
         cell.pinButton.addTarget(self, action: #selector(pinGroup(sender:)), for: .touchUpInside)
-        
-        cell.profileView.af.setImage(withURL: imageUrl)
         
         return cell
     }
@@ -201,5 +200,4 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func rewindToChats(unwindSegue: UIStoryboardSegue) {}
-    
 }
