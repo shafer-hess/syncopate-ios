@@ -26,7 +26,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         notificationTableView.dataSource = self
         
         notificationTableView.rowHeight = UITableView.automaticDimension
-        notificationTableView.estimatedRowHeight = 150
+        notificationTableView.estimatedRowHeight = 110
         
         notificationTableView.reloadData()
     }

@@ -331,7 +331,7 @@
                                                     <state key="normal" image="pin-group-unselected"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-1j-Vwq">
-                                                    <rect key="frame" x="346" y="46" width="13" height="20.333333333333336"/>
+                                                    <rect key="frame" x="346" y="45.666666666666664" width="13" height="20.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="23.670000000000002" id="JNL-a1-5Oh"/>
                                                         <constraint firstAttribute="width" constant="13" id="Vqa-g1-b5y"/>
@@ -1044,7 +1044,7 @@
                                 </constraints>
                                 <state key="normal" title="Add User Button" image="add-friend"/>
                                 <connections>
-                                    <segue destination="GnT-P2-gG4" kind="presentation" id="NPD-H6-hRm"/>
+                                    <segue destination="GnT-P2-gG4" kind="presentation" identifier="AddUsersSegue" id="NPD-H6-hRm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1114,9 +1114,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0y-aB-3Dw">
                                 <rect key="frame" x="322" y="20" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="onDoneButton:" destination="GnT-P2-gG4" eventType="touchUpInside" id="CH0-77-edv"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NT7-dL-2Gv">
-                                <rect key="frame" x="0.0" y="128" width="375" height="630"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="694"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -1154,7 +1157,10 @@
                                                         <constraint firstAttribute="height" constant="25" id="fLm-4u-jMo"/>
                                                     </constraints>
                                                     <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <state key="normal" title="Check Button" image="square" catalog="system"/>
+                                                    <state key="normal" image="square" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="onCheckButton:" destination="YsA-Rb-7cy" eventType="touchUpInside" id="sR3-LD-2Bc"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1173,7 +1179,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="checkButton" destination="eOP-L1-wb2" id="wHR-V6-Ola"/>
+                                            <outlet property="checkButton" destination="eOP-L1-wb2" id="goN-An-tbC"/>
                                             <outlet property="nameLabel" destination="i51-Hr-DB3" id="Vhc-gJ-APH"/>
                                             <outlet property="profileImage" destination="uHc-Zr-kHC" id="NEG-Tb-idf"/>
                                             <outlet property="usernameLabel" destination="HMI-UT-KBv" id="Pv0-9i-Hkn"/>
@@ -1181,25 +1187,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="RYw-zB-0wD">
-                                <rect key="frame" x="0.0" y="72" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="RYw-zB-0wD" firstAttribute="trailing" secondItem="H6F-4f-FoP" secondAttribute="trailing" id="Eou-Dq-87L"/>
                             <constraint firstItem="H6F-4f-FoP" firstAttribute="trailing" secondItem="r0y-aB-3Dw" secondAttribute="trailing" constant="16" id="IaX-4z-0qA"/>
                             <constraint firstItem="b91-Pe-byI" firstAttribute="leading" secondItem="H6F-4f-FoP" secondAttribute="leading" constant="16" id="JIA-mh-4JP"/>
-                            <constraint firstItem="RYw-zB-0wD" firstAttribute="top" secondItem="b91-Pe-byI" secondAttribute="bottom" constant="16" id="PYT-HT-M27"/>
                             <constraint firstItem="r0y-aB-3Dw" firstAttribute="leading" relation="lessThanOrEqual" secondItem="b91-Pe-byI" secondAttribute="trailing" constant="161" id="Pal-z7-bP8"/>
                             <constraint firstItem="r0y-aB-3Dw" firstAttribute="top" secondItem="H6F-4f-FoP" secondAttribute="top" constant="20" id="TAE-61-Fhm"/>
                             <constraint firstItem="b91-Pe-byI" firstAttribute="top" secondItem="H6F-4f-FoP" secondAttribute="top" constant="20" id="aRJ-eC-4xR"/>
-                            <constraint firstItem="RYw-zB-0wD" firstAttribute="top" secondItem="r0y-aB-3Dw" secondAttribute="bottom" constant="22" id="kbb-5h-uB6"/>
-                            <constraint firstItem="RYw-zB-0wD" firstAttribute="leading" secondItem="H6F-4f-FoP" secondAttribute="leading" id="yMD-O8-ZFu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H6F-4f-FoP"/>
                     </view>
+                    <connections>
+                        <outlet property="addUserTableView" destination="NT7-dL-2Gv" id="5fN-EV-Zw3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJe-Qq-g9J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
