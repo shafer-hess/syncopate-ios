@@ -331,7 +331,7 @@
                                                     <state key="normal" image="pin-group-unselected"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0V2-1j-Vwq">
-                                                    <rect key="frame" x="346" y="46" width="13" height="20.333333333333336"/>
+                                                    <rect key="frame" x="346" y="45.666666666666664" width="13" height="20.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="23.670000000000002" id="JNL-a1-5Oh"/>
                                                         <constraint firstAttribute="width" constant="13" id="Vqa-g1-b5y"/>
@@ -366,21 +366,14 @@
                         <viewLayoutGuide key="safeArea" id="rR9-o6-2oO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Chats" largeTitleDisplayMode="always" id="DY5-Wu-14W">
-                        <barButtonItem key="leftBarButtonItem" title="Create Group Button" image="plus.bubble" catalog="system" id="mTO-gC-oqb">
+                        <barButtonItem key="rightBarButtonItem" title="Create Group Button" image="plus.bubble" catalog="system" id="mTO-gC-oqb">
                             <connections>
                                 <segue destination="PcM-J3-fvd" kind="presentation" identifier="CreateSegue" modalPresentationStyle="fullScreen" id="nkg-f8-fSP"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="YUa-uD-CKJ">
-                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="onLogout:" destination="5jm-Qa-qbN" id="q1B-EL-Ixk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="chatsTableView" destination="shn-7I-nWL" id="Uge-Sr-614"/>
-                        <outlet property="logoutButton" destination="YUa-uD-CKJ" id="RDx-VV-Tcc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXS-Ac-uue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -804,7 +797,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dxl-eU-V7L"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="lLd-dK-n5Q"/>
+                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="lLd-dK-n5Q">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="CVR-4N-qTC">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="onLogout:" destination="E7O-L8-E9v" id="7uD-bO-uLr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailLabel" destination="cgY-pv-UQu" id="2Xi-cV-xSj"/>
                         <outlet property="nameLabel" destination="N20-H2-hAy" id="9PW-nK-d1I"/>
