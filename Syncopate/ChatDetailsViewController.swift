@@ -22,7 +22,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     // Variables
     var groupId: Int = -1
     var group: NSDictionary = [:]
-    var users: NSArray = []
+    var users: [NSDictionary] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.title = group["group__name"] as? String
         
         // Set Users Array from Group
-        users = group["users"] as! NSArray
+        users = group["users"] as! Array
         
         // Populate description label
         if(group["group__description"] as? String == "") {
@@ -68,6 +68,10 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         let name = first_name + " " + last_name
         cell.userLabel.text = name
+        
+        // Setup Remove Button
+        cell.removeButton.tag = user["user__id"] as! Int
+        cell.removeButton.addTarget(self, action: #selector(removeUser(sender:)), for: .touchUpInside)
         
         return cell
     }
@@ -222,6 +226,50 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         leaveGroupAlert.addAction(confirmButton)
         
         self.present(leaveGroupAlert, animated: true, completion: nil)
+    }
+    
+    @objc func removeUser(sender: UIButton) {
+        // Retrieve stored user info
+        let userId: Int = sender.tag
+        
+        // Set up Alert Controller
+        let removeUserAlert = UIAlertController(title: "Remove User?", message: "Are you sure that you want to remove this user from the group?", preferredStyle: .alert)
+        
+        let cancelButton = UIAlertAction(title: "No", style: .destructive) { (action) in }
+        let confirmButton = UIAlertAction(title: "Yes", style: .default) { (action) in
+            // Perform HTTP Request
+            let url = "http://18.219.112.140:8000/api/v1/boot/"
+            
+            // Request Parameters
+            let params: [String : Any] = [
+                "user_id": userId,
+                "group_id": self.groupId
+            ]
+                    
+            // HTTP Request
+            AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                    case .success(let value):
+                        if let data = value as? [String : Any] {
+                            if(data["status"] as! String == "success") {
+                                self.updateUserList()
+                            }
+                        }
+
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                }
+            }
+        }
+        
+        // Present Alert
+        removeUserAlert.addAction(cancelButton)
+        removeUserAlert.addAction(confirmButton)
+        self.present(removeUserAlert, animated: true, completion: nil)
+    }
+    
+    func updateUserList() {
+        
     }
     
     /*

@@ -1023,14 +1023,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtd-i3-AZ7">
+                                                    <rect key="frame" x="308" y="12" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="K6S-g3-RF6"/>
+                                                        <constraint firstAttribute="width" constant="20" id="VOd-DC-TeZ"/>
+                                                    </constraints>
+                                                    <state key="normal" image="cancel-button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Wtd-i3-AZ7" firstAttribute="trailing" secondItem="JhK-qL-NXt" secondAttribute="trailingMargin" id="92G-Vz-WEp"/>
                                                 <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="doi-od-0eu" secondAttribute="trailing" constant="276" id="kdj-NA-xfS"/>
+                                                <constraint firstItem="Wtd-i3-AZ7" firstAttribute="centerY" secondItem="JhK-qL-NXt" secondAttribute="centerY" id="mhq-uz-e6v"/>
                                                 <constraint firstItem="doi-od-0eu" firstAttribute="centerY" secondItem="JhK-qL-NXt" secondAttribute="centerY" id="oyG-2e-M9h"/>
                                                 <constraint firstItem="doi-od-0eu" firstAttribute="leading" secondItem="JhK-qL-NXt" secondAttribute="leadingMargin" id="t7k-E6-clp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="removeButton" destination="Wtd-i3-AZ7" id="Vkz-QB-4mi"/>
                                             <outlet property="userLabel" destination="doi-od-0eu" id="b57-NX-qmI"/>
                                         </connections>
                                     </tableViewCell>
