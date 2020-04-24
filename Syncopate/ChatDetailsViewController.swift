@@ -69,6 +69,10 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         let name = first_name + " " + last_name
         cell.userLabel.text = name
         
+        // Setup Remove Button
+        cell.removeButton.tag = user["user__id"] as! Int
+        cell.removeButton.addTarget(self, action: #selector(removeUser(sender:)), for: .touchUpInside)
+        
         return cell
     }
 
@@ -222,6 +226,77 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         leaveGroupAlert.addAction(confirmButton)
         
         self.present(leaveGroupAlert, animated: true, completion: nil)
+    }
+    
+    @objc func removeUser(sender: UIButton) {
+        // Retrieve stored user info
+        let userId: Int = sender.tag
+        
+        // Set up Alert Controller
+        let removeUserAlert = UIAlertController(title: "Remove User?", message: "Are you sure that you want to remove this user from the group?", preferredStyle: .alert)
+        
+        let cancelButton = UIAlertAction(title: "No", style: .destructive) { (action) in }
+        let confirmButton = UIAlertAction(title: "Yes", style: .default) { (action) in
+            // Perform HTTP Request
+            let url = "http://18.219.112.140:8000/api/v1/boot/"
+            
+            // Request Parameters
+            let params: [String : Any] = [
+                "user_id": userId,
+                "group_id": self.groupId
+            ]
+  
+            // HTTP Request
+            AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                    case .success(let value):
+                        if let data = value as? [String : Any] {
+                            if(data["status"] as! String == "success") {
+                                self.updateUserList()
+                            }
+                        }
+
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                }
+            }
+        }
+        
+        // Present Alert
+        removeUserAlert.addAction(cancelButton)
+        removeUserAlert.addAction(confirmButton)
+        self.present(removeUserAlert, animated: true, completion: nil)
+    }
+    
+    func updateUserList() {
+        // UserGroups Endpoint
+        let url = "http://18.219.112.140:8000/api/v1/get-user-group/"
+        
+        // HTTP Request
+        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
+        
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? NSArray {
+                        for entry in data {
+                            let group = entry as! NSDictionary
+                            if(group["group__id"] as! Int == self.groupId) {
+                                let users = group["users"] as! NSArray
+                                
+                                self.users = users
+                                self.usersTableView.reloadData()
+                                return
+                            }
+                        }
+                    }
+                    
+                    // Fallback if request fails
+                    self.performSegue(withIdentifier: "rewindToChats", sender: self)
+                
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
     
     /*
