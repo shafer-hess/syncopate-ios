@@ -251,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="3306.4000000000001" y="-1263.5467980295566"/>
         </scene>
-        <!--Chats-->
+        <!--ChatsViewController-->
         <scene sceneID="4NS-c6-zaq">
             <objects>
-                <viewController id="5jm-Qa-qbN" customClass="ChatsViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ChatsViewController" id="5jm-Qa-qbN" customClass="ChatsViewController" customModule="Syncopate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A90-kf-G7T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1070,8 +1070,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oo3-2W-Wu2"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="N4W-0F-LCo"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="N4W-0F-LCo">
+                        <barButtonItem key="rightBarButtonItem" image="trash" catalog="system" id="3B8-lx-rbT">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="onDelete:" destination="C5N-r8-eyU" id="M3Z-so-a4C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="3B8-lx-rbT" id="P3a-kg-XJi"/>
                         <outlet property="descriptionLabel" destination="pxH-GJ-r56" id="T71-Pi-QXx"/>
                         <outlet property="groupDescButton" destination="2Fy-bj-mSP" id="4f4-54-4Hv"/>
                         <outlet property="groupNameButton" destination="0TP-0D-LaO" id="Ipw-TB-aQe"/>
@@ -1407,5 +1415,6 @@
         <image name="plus.bubble" catalog="system" width="128" height="110"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>

@@ -25,6 +25,8 @@ class AddUserViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         addUserTableView.rowHeight = UITableView.automaticDimension
         addUserTableView.estimatedRowHeight = 100
+        
+        addUserTableView.allowsSelection = false
     }
     
     override func viewDidAppear(_ animated: Bool) {

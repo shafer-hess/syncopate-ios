@@ -16,6 +16,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var groupDescButton: UIButton!
     @IBOutlet weak var leaveGroupButton: UIButton!
     @IBOutlet weak var pinSwitch: UISwitch!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     @IBOutlet weak var usersTableView: UITableView!
     
@@ -32,6 +33,13 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Set Users Array from Group
         users = group["users"] as! NSArray
+        
+        // Check if current user is owner
+        if (group["user"] as? Int != group["group__owner"] as? Int) {
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            self.navigationItem.rightBarButtonItem = self.deleteButton
+        }
         
         // Populate description label
         if(group["group__description"] as? String == "") {
@@ -72,6 +80,38 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
+    @IBAction func onDelete(_ sender: Any) {
+        let delete = UIAlertController(title: "Delete Group", message: "Are you sure you want to delete this group?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in }
+        let yes = UIAlertAction(title: "Yes", style: .default) { (action) in
+            // Delete Endpoint
+            let url = "http://18.219.112.140:8000/api/v1/delete-group/"
+            
+            // POST parameters
+            let params: [String : Any] = [
+                "group_id": self.groupId,
+                "deleted": true
+            ]
+            
+            // HTTP Request
+            AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+                switch response.result {
+                    case .success(let value):
+                        if let data = value as? [String : Any] {
+                            if (data["status"] as! String == "success") {
+                                 self.performSegue(withIdentifier: "rewindToChats", sender: self)
+                            }
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                }
+            }
+        }
+        delete.addAction(cancel)
+        delete.addAction(yes)
+        present(delete, animated: true)
+    }
+    
     @IBAction func editGroupName(_ sender: Any) {
         // Change Name Modal
         let changeNameAlert = UIAlertController(title: "Change Group Name", message: "Enter new group name:", preferredStyle: .alert)
