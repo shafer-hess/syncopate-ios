@@ -22,7 +22,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     // Variables
     var groupId: Int = -1
     var group: NSDictionary = [:]
-    var users: [NSDictionary] = []
+    var users: NSArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.title = group["group__name"] as? String
         
         // Set Users Array from Group
-        users = group["users"] as! Array
+        users = group["users"] as! NSArray
         
         // Populate description label
         if(group["group__description"] as? String == "") {
@@ -245,7 +245,7 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                 "user_id": userId,
                 "group_id": self.groupId
             ]
-                    
+  
             // HTTP Request
             AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
                 switch response.result {
@@ -269,8 +269,37 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func updateUserList() {
+        // UserGroups Endpoint
+        let url = "http://18.219.112.140:8000/api/v1/get-user-group/"
         
+        // HTTP Request
+        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
+        
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? NSArray {
+                        for entry in data {
+                            let group = entry as! NSDictionary
+                            if(group["group__id"] as! Int == self.groupId) {
+                                let users = group["users"] as! NSArray
+                                self.users = users
+                                self.usersTableView.reloadData()
+                                
+                                return
+                            }
+                        }
+                    }
+                    
+                    // Fallback if request fails
+                    self.performSegue(withIdentifier: "rewindToChats", sender: self)
+                
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
+    
+    
     
     /*
     // MARK: - Navigation
