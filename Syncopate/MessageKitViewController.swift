@@ -68,7 +68,13 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+
+        scrollsToBottomOnKeyboardBeginsEditing = true
+        maintainPositionOnKeyboardFrameChanged = true
+        
         messageInputBar.delegate = self
+        
+        messagesCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapView(_:))))
         
         getMessages(groupId: groupId)
         
@@ -393,16 +399,16 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     // MARK: - Keyboard View Insets
     
     @objc func keyboardWillAppear(_ notification: NSNotification) {
-        if self.view.frame.origin.y == 0{
-            self.view.frame.origin.y -= 100
-            self.messagesCollectionView.scrollToBottom()
+        if(messagesCollectionView.contentInset.bottom == 0) {
+            messagesCollectionView.contentInset.bottom = messageInputBar.frame.height
+            messagesCollectionView.verticalScrollIndicatorInsets.bottom = messageInputBar.frame.height
         }
     }
     
     @objc func keyboardWillDisappear(_ notification: NSNotification) {
-        if self.view.frame.origin.y != 0{
-            self.view.frame.origin.y += 100
-            self.messagesCollectionView.scrollToBottom()
+        if(messagesCollectionView.contentInset.bottom != 0) {
+           messagesCollectionView.contentInset.bottom = 0
+            messagesCollectionView.verticalScrollIndicatorInsets.bottom = 0
         }
     }
     
