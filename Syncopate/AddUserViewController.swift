@@ -60,34 +60,40 @@ class AddUserViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.height / 2
         cell.profileImage.clipsToBounds = true
         
-        let friend_id = list["id"] as? Int
-        cell.checkButtonAction = { [unowned self] in
-            let toBeChecked = !cell.checked
-            
-            if toBeChecked {
-                cell.setChecked(true)
-                print(friend_id!)
-                self.addList.append(friend_id!)
-                print(self.addList)
-            }
-            else {
-                cell.setChecked(false)
-                self.addList.removeAll(where: {$0 == friend_id!})
-                print(self.addList)
-            }
+        // Check if cell's id exists in array
+        let id_friend = list["id"] as? Int
+        if self.addList.contains(id_friend!) {
+            cell.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: UIControl.State.normal)
+        } else {
+            cell.checkButton.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
         }
         
+        cell.checkButton.tag = indexPath.row
+        cell.checkButton.addTarget(self, action: #selector(checkBox(sender:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func checkBox(sender: UIButton) {
+        let info = friends[sender.tag] as! NSDictionary
+        let friend_id = info["id"] as! Int
+
+        if (sender.imageView?.image == UIImage(systemName: "checkmark.square")) {
+            sender.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
+            self.addList.removeAll(where: {$0 == friend_id})
+        } else {
+            sender.setImage(UIImage(systemName: "checkmark.square"), for: UIControl.State.normal)
+            self.addList.append(friend_id)
+        }
     }
     
     @IBAction func onDoneButton(_ sender: Any) {
         // Alert controllers
         let alreadyInGroup = UIAlertController(title: "Error", message: "Someone you added is already in the group.", preferredStyle: .alert)
-        let confrim = UIAlertController(title: "Confirm", message: "Are you sure you want to the user(s) to the group?", preferredStyle: .alert)
+        let confirm = UIAlertController(title: "Confirm", message: "Are you sure you want to the user(s) to the group?", preferredStyle: .alert)
         
         // Dismiss screen if no friends are added
         if (self.addList.isEmpty) {
-            print(self.addList)
             self.dismiss(animated: true, completion: nil)
         }
         
@@ -96,8 +102,6 @@ class AddUserViewController: UIViewController, UITableViewDelegate, UITableViewD
         let yes = UIAlertAction(title: "Yes", style: .default) { (action) in
             // Add users to group endpoint
             let url = "http://18.219.112.140:8000/api/v1/add-to-group/"
-            print(self.id)
-            print(self.addList)
             // POST parameters
             let params: [String : Any] = [
                 "group_id": self.id,
@@ -122,10 +126,10 @@ class AddUserViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         alreadyInGroup.addAction(ok)
-        confrim.addAction(cancel)
-        confrim.addAction(yes)
+        confirm.addAction(cancel)
+        confirm.addAction(yes)
         
-        self.present(confrim, animated: true)
+        self.present(confirm, animated: true)
     }
     
     func getFriendsList() {
