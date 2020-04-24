@@ -116,32 +116,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
     }
-    
-    // Logout HTTP Request
-    @IBAction func onLogout(_ sender: Any) {
-        // Login Endpoint
-        let url = "http://18.219.112.140:8000/api/v1/logout/"
         
-        // Login HTTP Request
-        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
-            
-            switch response.result {
-                case .success(let value):
-                    if let data = value as? [String : Any] {
-                        if(data["status"] as! String == "success") {
-                            UserDefaults.standard.set(false, forKey: "loggedIn")
-                            self.dismiss(animated: true, completion: nil)
-                        } else {
-                            print("Error Logging Out")
-                        }
-                    }
-                
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
-    }
-    
     @objc func pinGroup(sender: UIButton) {
         // Retrieve Group from buttons indexpath tag
         let group = groups[sender.tag] as! NSDictionary
