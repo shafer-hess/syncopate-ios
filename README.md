@@ -144,7 +144,7 @@ Link to full video: https://drive.google.com/file/d/10Vmxcv__9XLPQFC9QVXBaQDUpSp
 - [x] User can leave groups
 
 <img src="https://media3.giphy.com/media/iF7bT91vzWqi1qKMQX/giphy.gif?cid=4d1e4f298c0483d6975b62761432fc443708436473c40a77&rid=giphy.gif" width=250>
-Link to full video: https://media3.giphy.com/media/iF7bT91vzWqi1qKMQX/giphy.gif?cid=4d1e4f298c0483d6975b62761432fc443708436473c40a77&rid=giphy.gif
+Link to full video: https://drive.google.com/file/d/1zsBCMZR4_3jMQNzg6UVLGu8yIQo5ek-S/view?usp=sharing
 
 ## Wireframes
 *We only made digital wireframes <br>
