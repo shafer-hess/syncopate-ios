@@ -11,8 +11,10 @@ import UIKit
 class AddFriendCell: UITableViewCell {
     // Outlets
     @IBOutlet weak var profileImage: UIImageView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    
     @IBOutlet weak var addButton: UIButton!
     
     // add friend button closure property

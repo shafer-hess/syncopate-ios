@@ -8,8 +8,8 @@
 
 import Alamofire
 import AlamofireImage
-import MessageKit
 import InputBarAccessoryView
+import MessageKit
 import SocketIO
 import UIKit
 
@@ -407,7 +407,7 @@ class MessageKitViewController: MessagesViewController, MessagesDataSource, Mess
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.view.endEditing(true)
+        inputAccessoryView?.endEditing(true)
     }
     
     // MARK: - Navigation

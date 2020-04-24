@@ -6,9 +6,9 @@
 //  Copyright © 2020 Syncopate. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import AlamofireImage
+import UIKit
 
 var cellCount: Int = -1
 // MARK: - Badge Notification
@@ -80,6 +80,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // Outlets
     @IBOutlet weak var addFriendButton: UIBarButtonItem!
     @IBOutlet weak var friendsTableView: UITableView!
+   
     var friends: NSArray = []
     var friendRequests: NSArray = []
     

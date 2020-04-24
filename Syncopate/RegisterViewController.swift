@@ -6,8 +6,8 @@
 //  Copyright © 2020 Syncopate. All rights reserved.
 //
 
-import UIKit
 import Alamofire
+import UIKit
 
 class RegisterViewController: UIViewController {
     // Outlets
@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
+    
     @IBOutlet weak var registerButton: UIButton!
     
     // Register button is pressed
