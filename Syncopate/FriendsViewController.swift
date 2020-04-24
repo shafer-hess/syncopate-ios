@@ -97,7 +97,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         friendsTableView.dataSource = self
         
         friendsTableView.rowHeight = UITableView.automaticDimension
-        friendsTableView.estimatedRowHeight = 150
+        friendsTableView.estimatedRowHeight = 110
     }
     
     override func viewDidAppear(_ animated: Bool) {

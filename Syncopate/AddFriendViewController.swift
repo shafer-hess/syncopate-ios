@@ -24,7 +24,7 @@ class AddFriendViewController: UIViewController, UITableViewDelegate, UITableVie
         userSearchBar.delegate = self
                 
         addFriendTableView.rowHeight = UITableView.automaticDimension
-        addFriendTableView.estimatedRowHeight = 150
+        addFriendTableView.estimatedRowHeight = 110
     }
     
     override func viewDidAppear(_ animated: Bool) {
