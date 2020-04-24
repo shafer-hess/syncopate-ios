@@ -61,6 +61,8 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Other Table Settings
         usersTableView.alwaysBounceVertical = false
+        usersTableView.estimatedRowHeight = 44
+        usersTableView.rowHeight = 45
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
