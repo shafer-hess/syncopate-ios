@@ -389,12 +389,21 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         // Image data to send
         let imageData = picture.jpegData(compressionQuality: 1.0)
         
-        // Request Parameters
-        let params: [String : Any] = [
-            "group_id": groupId
-        ]
-        
-        // TODO: - Add multipart form data upload, find out how to send parameters as well as image data
+        // Add multipart form data upload
+        AF.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imageData!, withName: "avatar", fileName: "temp", mimeType: "image/jpeg")
+            multipartFormData.append("\(self.groupId)".data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "group_id")
+        }, to: url, method: .post).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    if let data = value as? [String : Any] {
+                        if (data["status"] as! String == "success") {
+                        }
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: - Navigation
