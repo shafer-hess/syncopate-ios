@@ -49,9 +49,21 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Retrieve Group Information
         let group = groups[indexPath.row] as! NSDictionary
         
-        // TODO: UPDATE GROUP IMAGE URL
         // Group Image URL
-        let imageUrl = URL(string: "http://18.219.112.140/images/avatars/default.png")!
+        var url = "http://18.219.112.140/images/avatars/"
+        
+        if let suffix = group["group__profile_pic_url"] as? String {
+            if(suffix == "default_url") {
+                url += "default.png"
+            } else {
+                url += suffix
+            }
+        } else {
+            url += "default.png"
+        }
+        
+        // let imageUrl = URL(string: "http://18.219.112.140/images/avatars/default.png")!
+        let imageUrl = URL(string: url)!
         cell.profileView.af.setImage(withURL: imageUrl)
 
         cell.nameLabel.text = group["group__name"] as? String
