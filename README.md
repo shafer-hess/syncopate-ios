@@ -40,7 +40,7 @@ Syncopate provides a unified solution for all communication between Purdue stude
 - [x] User can see list of their chats
 - [x] User can send messages
 - [x] User can create groups
-- [ ] User can add users to a group
+- [x] User can add users to a group
 - [x] User can add friends
 - [x] Users can search for other users
 - [x] User receives notifications 
@@ -49,12 +49,12 @@ Syncopate provides a unified solution for all communication between Purdue stude
 **Optional Nice-to-have Stories**
 
 - [x] User can edit group details
-- [ ] User can upload a profile picture
-- [ ] User can upload a group profile picture
+- [x] User can upload a profile picture
+- [x] User can upload a group profile picture
 - [x] User can send photo messages
 - [ ] User can send file messages
 - [x] User can change their password
-- [ ] User can update their status
+- [x] User can update their status
 - [ ] User can like other user messages
 - [x] User can pin chats 
 
