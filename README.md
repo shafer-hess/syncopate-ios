@@ -1,10 +1,5 @@
-# syncopate-ios
-Port of Syncopate onto iOS Platform
-
-Group Project - README Template
-===
-
 # Syncopate
+Port of Syncopate onto iOS Platform
 
 ## Table of Contents
 1. [Overview](#Overview)
