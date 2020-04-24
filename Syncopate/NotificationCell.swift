@@ -11,7 +11,9 @@ import UIKit
 class NotificationCell: UITableViewCell {
     //Outlets
     @IBOutlet weak var profileImage: UIImageView!
+    
     @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var denyButton: UIButton!
     

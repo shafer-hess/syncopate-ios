@@ -6,9 +6,9 @@
 //  Copyright © 2020 Syncopate. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import AlamofireImage
+import UIKit
 
 class AddUserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Outlets
