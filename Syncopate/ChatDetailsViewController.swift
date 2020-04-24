@@ -9,7 +9,7 @@
 import Alamofire
 import UIKit
 
-class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     // Outlets
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var groupNameButton: UIButton!
@@ -337,6 +337,64 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                     print(error.localizedDescription)
             }
         }
+    }
+    
+    @IBAction func editGroupImage(_ sender: Any) {
+        // Set up image picker
+        let picker = UIImagePickerController()
+        
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        // Select photo source
+        let optionsAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let camera = UIAlertAction(title: "Camera", style: .default) { (action) in
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+        }
+        
+        let library = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in }
+        
+        // Add actions to alert and present
+        optionsAlert.addAction(camera)
+        optionsAlert.addAction(library)
+        optionsAlert.addAction(cancel)
+        self.present(optionsAlert, animated: true)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Get Image
+        let image = info[.editedImage] as! UIImage
+        
+        // Resize Image
+        let size = CGSize(width: 100, height: 100)
+        let scaledImage = image.af.imageAspectScaled(toFit: size)
+        
+        //Send Photo to Backend
+        uploadGroupProfilePicture(picture: scaledImage)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadGroupProfilePicture(picture: UIImage) {
+        // Url of request
+        let url = "http://18.219.112.140:8000/api/v1/group-avatar/"
+        
+        // Image data to send
+        let imageData = picture.jpegData(compressionQuality: 1.0)
+        
+        // Request Parameters
+        let params: [String : Any] = [
+            "group_id": groupId
+        ]
+        
+        // TODO: - Add multipart form data upload, find out how to send parameters as well as image data
     }
     
     // MARK: - Navigation
