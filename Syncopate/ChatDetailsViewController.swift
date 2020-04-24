@@ -282,9 +282,9 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                             let group = entry as! NSDictionary
                             if(group["group__id"] as! Int == self.groupId) {
                                 let users = group["users"] as! NSArray
+                                
                                 self.users = users
                                 self.usersTableView.reloadData()
-                                
                                 return
                             }
                         }
@@ -298,8 +298,6 @@ class ChatDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
-    
-    
     
     /*
     // MARK: - Navigation
